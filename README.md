@@ -1,63 +1,66 @@
 # 👋 Olá! Eu sou Bruno Pereira da Silva
 
-> Tecnologia, Cloud Computing, infraestrutura e desenvolvimento orientados por aprendizado prático.
+**Desenvolvimento de software • Soluções digitais para negócios • Tecnologia aplicada a problemas reais**
 
-## Sobre mim
+Sou formado em **Gestão da Tecnologia da Informação** e atualmente aprofundo meus estudos em Python, banco de dados e segurança da informação.
 
-Sou formado em **Gestão da Tecnologia da Informação** e venho construindo minha trajetória na área de tecnologia a partir de estudos, laboratórios e projetos práticos.
+Minha trajetória começou em **Customer Experience**, experiência que trouxe uma perspectiva importante para o desenvolvimento: compreender os problemas de quem utiliza um sistema. Hoje transformo essa visão em projetos web, ferramentas operacionais e produtos digitais em evolução.
 
-Minha experiência profissional começou em **Customer Experience**, onde desenvolvi competências em atendimento, resolução de problemas e relacionamento com clientes. Essa experiência passou a servir como base para uma transição profissional direcionada a tecnologia, desenvolvimento, infraestrutura e Cloud Computing.
+> **Da necessidade à solução:** entender o problema, construir, testar, melhorar e documentar.
 
-Meu principal método de aprendizado é transformar conceitos em projetos reais. Por isso, este perfil reúne laboratórios, aplicações, automações e experimentos que representam minha evolução técnica.
+## 💼 O que eu construo
 
-## ☁️ Foco técnico atual
+- **Experiências digitais para negócios:** sites, portfólios e interfaces responsivas.
+- **Sistemas operacionais:** ferramentas para organizar informações, atendimentos e pedidos.
+- **Produtos em evolução:** experimentação com arquitetura de aplicações, integrações e modelos SaaS.
+- **Laboratórios técnicos:** infraestrutura, Cloud Computing e automação.
 
-- AWS Cloud
-- Linux
-- Docker
-- Kubernetes
-- JavaScript
-- Node.js
-- Infraestrutura e automação
-- Monitoramento e observabilidade
-- Desenvolvimento de aplicações web
+## 🚀 Projetos em destaque
 
-## 🚀 Ecossistema de projetos
+| Projeto | O que resolve | Situação |
+| --- | --- | --- |
+| [**Delivery / Cardápio Online**](https://github.com/eubruno-coder/menu_lanchonete) | Jornada de pedido mobile-first, checkout e envio de comanda pelo WhatsApp; base para evolução de uma plataforma de gestão de pedidos. | Em desenvolvimento |
+| [**Laboratório Delivery**](https://github.com/eubruno-coder/delivery-laboratorio) | Ambiente de experimentação de funcionalidades e fluxos operacionais para um futuro SaaS. | Laboratório |
+| [**NCroch's**](https://github.com/eubruno-coder/site_ncrochs) | Portfólio digital de uma marca de crochê, com identidade visual própria e exposição de criações. | Projeto para negócio real |
+| [**Central de Atendimento — Intranet**](https://github.com/eubruno-coder/projetintranet2) | Organização de scripts, recursos e informações para rotinas de atendimento. | Projeto web |
+| [**PortalClima**](https://github.com/eubruno-coder/portalclima) | Experiência web com informações meteorológicas e interface visual dinâmica. | Projeto web |
 
-Meu GitHub está organizado como um conjunto de projetos com diferentes objetivos:
+### 🛠️ Outros projetos e experiências
 
-### 🏢 Sistemas e aplicações
+Também desenvolvo e documento experiências com **sistemas de escalas**, **interfaces operacionais**, **Linux**, **AWS**, **Nginx**, **automação** e estudos de infraestrutura. Esses trabalhos complementam minha atuação em desenvolvimento de aplicações.
 
-- **Central de Atendimento — Intranet** — plataforma web para organização de recursos e scripts operacionais.
-- **Sistema de Escalas** — aplicação para visualização e organização de jornadas e pausas.
-- **PortalClima** — portal web de previsão meteorológica com dashboard dinâmico.
-- **Minha Compra** — assistente pessoal de compras com abordagem mobile-first.
+## 🧰 Tecnologias e áreas de estudo
 
-### ☁️ Cloud e infraestrutura
+**Desenvolvimento web:** HTML, CSS e JavaScript.
 
-- **Project Nginx** — automação Bash para monitoramento de serviço Nginx em Linux.
-- **Projeto Compass 02** — laboratório AWS com WordPress, EC2, RDS, EFS, Load Balancer e componentes de rede.
-- **Projeto Final** — documentação de uma proposta de migração e modernização de arquitetura legada para AWS.
+**Programação e dados:** Python e bancos de dados (em aprofundamento acadêmico e prático).
 
-## 🔗 Projetos relacionados
+**Ferramentas:** Git, GitHub e VS Code.
 
-Alguns projetos possuem relação direta entre si:
+**Infraestrutura e Cloud:** Linux, AWS, automação e fundamentos de serviços e implantação.
 
-```text
-                    eubruno-coder
-                         │
-          ┌──────────────┼──────────────┐
-          │              │              │
-      Sistemas        Cloud         Laboratórios
-          │              │              │
-    ┌─────┼─────┐    ┌───┴───┐     ┌────┴────┐
-    │     │     │    │       │     │         │
-Intranet Escala Clima Nginx  AWS  Compass  Projeto Final
-    │
-    └──── integração de aplicações
-```
+**Princípios de produto:** interfaces mobile-first, usabilidade, organização de fluxos e melhoria contínua.
 
-A organização busca demonstrar não apenas projetos isolados, mas a evolução de conhecimentos em desenvolvimento, infraestrutura e Cloud.
+## 🧭 Como trabalho
+
+1. **Entender:** identificar a necessidade real do usuário ou negócio.
+2. **Prototipar:** transformar requisitos em uma interface e fluxo testáveis.
+3. **Implementar:** construir soluções incrementais e funcionais.
+4. **Validar:** testar o uso prático, corrigir falhas e simplificar processos.
+5. **Evoluir:** documentar decisões e preparar o próximo ciclo.
+
+## 🎯 Direção profissional
+
+Busco oportunidades em **desenvolvimento de software** e projetos em que tecnologia gere resultados concretos. Tenho interesse especial em aplicações web, sistemas de gestão, automação e produtos digitais escaláveis.
+
+Meu portfólio reúne tanto entregas voltadas a negócios quanto experimentos técnicos. **Projetos em laboratório ou desenvolvimento são apresentados como tal**, porque evolução também faz parte do trabalho.
+
+## 📚 Formação e evolução
+
+- 🎓 Formação em **Gestão da Tecnologia da Informação**.
+- 📖 Pós-graduação em andamento, com estudos em **Python, bancos de dados e segurança da informação**.
+- ☁️ Experiência prática e laboratórios em **Cloud Computing e infraestrutura**.
+- 🔁 Aprendizado orientado por projetos: **aprender → construir → testar → documentar → evoluir**.
 
 ## 🐍 Atividade de contribuições
 
@@ -67,42 +70,19 @@ A organização busca demonstrar não apenas projetos isolados, mas a evolução
   <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/eubruno-coder/eubruno-coder/output/github-contribution-grid-snake.svg">
 </picture>
 
-## 🎯 Objetivo profissional
+## 🗺️ Próximos passos
 
-Meu objetivo é consolidar uma carreira em **Tecnologia**, com foco crescente em Cloud, infraestrutura, automação e desenvolvimento de soluções.
-
-Busco oportunidades em que possa aplicar conhecimento técnico, experiência profissional e capacidade de aprendizado contínuo para contribuir com projetos que gerem impacto real.
-
-## 📚 Filosofia de aprendizado
-
-> **Aprender → construir → testar → documentar → evoluir.**
-
-Cada projeto deste perfil representa uma etapa desse processo.
-
-## 🗺️ Evolução do portfólio
-
-- [x] Estruturação inicial do perfil
-- [x] Projetos de infraestrutura e Cloud
-- [x] Projetos web independentes
-- [x] Organização dos repositórios
-- [x] Padronização dos READMEs
-- [x] Integração entre projetos relacionados
-- [ ] Consolidar documentação técnica
-- [ ] Evoluir aplicações para arquiteturas mais robustas
-- [ ] Ampliar automações e CI/CD
-- [ ] Expandir projetos de Cloud e DevOps
-
-## 📌 Status
-
-🚀 **Perfil em evolução contínua.**
-
-Este repositório funciona como a página principal do meu portfólio técnico no GitHub.
-
-Fique à vontade para explorar os projetos e acompanhar minha evolução.
+- [x] Organizar projetos e laboratórios em um portfólio público.
+- [x] Desenvolver aplicações web com foco em uso real.
+- [x] Iniciar um produto de pedidos digitais com visão de SaaS.
+- [ ] Ampliar testes, documentação e demonstrações dos projetos.
+- [ ] Evoluir integrações, persistência de dados e arquitetura dos sistemas.
+- [ ] Aprofundar práticas de implantação, segurança e automação.
 
 ---
 
 <p align="center">
   <strong>Bruno Pereira da Silva</strong><br>
-  Tecnologia · Cloud · Infraestrutura · Desenvolvimento
+  Desenvolvimento de Software · Produtos Digitais · Soluções para Negócios<br>
+  <a href="https://github.com/eubruno-coder">Explorar meu GitHub</a>
 </p>
