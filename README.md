@@ -22,7 +22,6 @@ Minha trajetória começou em **Customer Experience**, experiência que trouxe u
 | [**Delivery / Cardápio Online**](https://github.com/eubruno-coder/menu_lanchonete) | Jornada de pedido mobile-first, checkout e envio de comanda pelo WhatsApp; base para evolução de uma plataforma de gestão de pedidos. | Em desenvolvimento |
 | [**Laboratório Delivery**](https://github.com/eubruno-coder/delivery-laboratorio) | Ambiente de experimentação de funcionalidades e fluxos operacionais para um futuro SaaS. | Laboratório |
 | [**NCroch's**](https://github.com/eubruno-coder/site_ncrochs) | Portfólio digital de uma marca de crochê, com identidade visual própria e exposição de criações. | Projeto para negócio real |
-| [**Central de Atendimento — Intranet**](https://github.com/eubruno-coder/projetintranet2) | Organização de scripts, recursos e informações para rotinas de atendimento. | Projeto web |
 | [**PortalClima**](https://github.com/eubruno-coder/portalclima) | Experiência web com informações meteorológicas e interface visual dinâmica. | Projeto web |
 
 ### 🛠️ Outros projetos e experiências
