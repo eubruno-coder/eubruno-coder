@@ -16,7 +16,7 @@ const routes = {
 const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function section(title, subtitle, body) { return `<div class="section-heading"><h2>${title}</h2><p>${subtitle}</p></div>${body}`; }
 function home(){
-  return `<section class="welcome-panel"><span class="eyebrow">PORTFÓLIO PROFISSIONAL</span><h1>Construindo soluções.<br><span>Conectando tecnologia e propósito.</span></h1><p>${esc(profile.headline).replaceAll(" | "," · ")}</p></section>
+  return `<section class="welcome-panel"><span class="eyebrow">PORTFÓLIO PROFISSIONAL · CLOUD · DEVOPS</span><h1>Construindo soluções.<br><span>Conectando tecnologia e propósito.</span></h1><p>${esc(profile.headline).replaceAll(" | "," · ")}. Conheça minha trajetória, meus conhecimentos e projetos com evidências públicas.</p><div class="hero-actions"><a class="button-primary" href="#/projetos">Explorar projetos <span>↗</span></a><a class="button-secondary" href="#/sobre">Sobre mim</a></div></section>
   ${section("Perfil profissional","Tecnologia, operações e aprendizado contínuo.",`<div class="info-card"><h3>Cloud, DevOps e Infraestrutura</h3><p>Profissional de tecnologia com experiência de estágio em DevSecOps e Cloud AWS, apoiada por uma trajetória anterior em operações, atendimento técnico, relacionamento com clientes e supervisão de equipes. Contato com Kubernetes (EKS), Shell Script, CloudWatch e GitHub Actions, além de estudos em automação e infraestrutura.</p></div>`)}
   ${section("Projetos em destaque","Iniciativas públicas e laboratórios práticos.",projectCards(projects.slice(0,3))) }`;
 }
