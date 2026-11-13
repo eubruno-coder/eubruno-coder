@@ -1,9 +1,130 @@
 [
-  {"name":"LicitaRadar","description":"Plataforma em planejamento para inteligência em compras públicas, com foco em análise assistida de editais.","url":"https://github.com/eubruno-coder/licitaradar","tags":["Produto digital","IA aplicada","Em planejamento"],"type":"original"},
-  {"name":"Portal de Pedidos","description":"Cardápio digital mobile-first com personalização de produtos, carrinho e fluxo de pedidos via WhatsApp.","url":"https://github.com/eubruno-coder/menu_lanchonete","tags":["HTML","CSS","JavaScript"],"type":"original"},
-  {"name":"Delivery Laboratório","description":"Ambiente experimental para testar fluxos operacionais e evolução de uma solução de pedidos.","url":"https://github.com/eubruno-coder/delivery-laboratorio","tags":["Experimentos","Web"],"type":"study"},
-  {"name":"NCroch's","description":"Site institucional e vitrine digital para um pequeno negócio de peças artesanais em crochê.","url":"https://github.com/eubruno-coder/site_ncrochs","tags":["Web","Institucional"],"type":"original"},
-  {"name":"PortalClima","description":"Painel de consulta meteorológica com busca por cidade e recursos de localização.","url":"https://github.com/eubruno-coder/portalclima","tags":["Web","API"],"type":"original"},
-  {"name":"Minha Compra","description":"Aplicação de lista de compras com foco em uso simples e experiência mobile.","url":"https://github.com/eubruno-coder/compras","tags":["JavaScript","Mobile-first"],"type":"original"},
-  {"name":"Nginx Status Monitor","description":"Script Bash para monitoramento de Nginx em Linux, geração de logs e relatório HTML.","url":"https://github.com/eubruno-coder/Project_nginx","tags":["Bash","Linux","Nginx"],"type":"original"}
+  {
+    "name": "Projeto Final — Modernização AWS",
+    "description": "Proposta documentada de migração e modernização de arquitetura legada para AWS, com Amazon EKS, RDS, EFS, Load Balancer, CloudFront, WAF e pipeline CI/CD.",
+    "url": "https://github.com/eubruno-coder/Projeto-Final",
+    "tags": [
+      "AWS",
+      "Amazon EKS",
+      "Arquitetura Cloud",
+      "Projeto acadêmico"
+    ],
+    "type": "study",
+    "status": "Documentação técnica",
+    "evidence": "README e diagramas da arquitetura atual e proposta"
+  },
+  {
+    "name": "Projeto Compass 02 — WordPress em AWS",
+    "description": "Laboratório de arquitetura AWS para hospedar WordPress com VPC, sub-redes públicas e privadas, EC2, RDS, EFS, Docker, Load Balancer e NAT Gateway.",
+    "url": "https://github.com/eubruno-coder/Projeto-Compass-02",
+    "tags": [
+      "AWS",
+      "Docker",
+      "VPC",
+      "RDS",
+      "EFS"
+    ],
+    "type": "study",
+    "status": "Laboratório documentado",
+    "evidence": "README, scripts e diagramas da implementação"
+  },
+  {
+    "name": "Nginx Status Monitor",
+    "description": "Script Bash para verificar o serviço Nginx em Linux, registrar logs, gerar relatório HTML e permitir execução periódica com Cron.",
+    "url": "https://github.com/eubruno-coder/Project_nginx",
+    "tags": [
+      "Bash",
+      "Linux",
+      "Nginx",
+      "Cron"
+    ],
+    "type": "original",
+    "status": "Projeto técnico",
+    "evidence": "Código Bash, logs e relatório HTML"
+  },
+  {
+    "name": "Portal de Pedidos",
+    "description": "Cardápio digital mobile-first com categorias, carrinho, personalização de produtos, checkout e geração de comanda para envio pelo WhatsApp.",
+    "url": "https://github.com/eubruno-coder/menu_lanchonete",
+    "demoUrl": "https://eubruno-coder.github.io/menu_lanchonete/",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Mobile-first"
+    ],
+    "type": "original",
+    "status": "Em desenvolvimento",
+    "evidence": "Código-fonte e demonstração publicada"
+  },
+  {
+    "name": "Delivery — Laboratório de Integração",
+    "description": "Ambiente de homologação para testar envio e gestão de pedidos entre dispositivos, com autenticação, painel Kanban, Supabase e sincronização Realtime.",
+    "url": "https://github.com/eubruno-coder/delivery-laboratorio",
+    "tags": [
+      "JavaScript",
+      "Supabase",
+      "Realtime",
+      "Homologação"
+    ],
+    "type": "study",
+    "status": "Laboratório / homologação",
+    "evidence": "Código-fonte, fluxo de autenticação e painel operacional; validação entre dispositivos pendente"
+  },
+  {
+    "name": "PortalClima",
+    "description": "Aplicação web de consulta meteorológica com busca por cidade, geolocalização, condições atuais, previsão horária e previsão de sete dias.",
+    "url": "https://github.com/eubruno-coder/portalclima",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Open-Meteo"
+    ],
+    "type": "original",
+    "status": "V1 em desenvolvimento",
+    "evidence": "Código-fonte, integração Open-Meteo e documentação da arquitetura"
+  },
+  {
+    "name": "Minha Compra",
+    "description": "Aplicação mobile-first para organizar produtos, preços e quantidades, calcular o total e persistir a lista localmente no navegador.",
+    "url": "https://github.com/eubruno-coder/compras",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "LocalStorage"
+    ],
+    "type": "original",
+    "status": "V1",
+    "evidence": "Código-fonte e funcionalidades documentadas no README"
+  },
+  {
+    "name": "Monitor Financeiro",
+    "description": "Dashboard web responsivo que acompanha dados publicados de uma planilha Google Sheets, com atualização periódica e diagnóstico de sincronização.",
+    "url": "https://github.com/eubruno-coder/monitor-financeiro",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Google Sheets"
+    ],
+    "type": "original",
+    "status": "V1 / teste",
+    "evidence": "Código-fonte, parser de dados e integração documentada com Google Sheets"
+  },
+  {
+    "name": "NCroch's — Portfólio Digital",
+    "description": "Site institucional e portfólio digital para marca de peças artesanais em crochê, com identidade visual, apresentação de produtos e estrutura responsiva.",
+    "url": "https://github.com/eubruno-coder/site_ncrochs",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Web design"
+    ],
+    "type": "original",
+    "status": "Em desenvolvimento",
+    "evidence": "Código-fonte e estrutura visual documentada"
+  }
 ]
