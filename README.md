@@ -55,7 +55,7 @@ Projetos públicos que representam meu foco atual: produtos digitais, aplicaçõ
         <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white" alt="CSS3">
         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
       </p>
-      <p><a href="https://eubruno-coder.github.io/menu_lanchonete/">Ver demonstração →</a> · <a href="https://github.com/eubruno-coder/menu_lanchoneta">Código-fonte</a></p>
+      <p><a href="https://eubruno-coder.github.io/menu_lanchonete/">Ver demonstração →</a> · <a href="https://github.com/eubruno-coder/menu_lanchonete">Código-fonte</a></p>
     </td>
   </tr>
   <tr>
