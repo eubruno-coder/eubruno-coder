@@ -2,6 +2,12 @@
 
 **Desenvolvimento de software • Soluções digitais para negócios • Tecnologia aplicada a problemas reais**
 
+[![Área](https://img.shields.io/badge/área-desenvolvimento%20de%20software-blue)](#o-que-eu-construo)
+[![Produtos](https://img.shields.io/badge/foco-produtos%20digitais-2ea44f)](#projetos-em-destaque)
+[![Tecnologias](https://img.shields.io/badge/tecnologias-Web%20%7C%20Python%20%7C%20Cloud-orange)](#tecnologias-e-áreas-de-estudo)
+
+---
+
 Sou formado em **Gestão da Tecnologia da Informação** e atualmente aprofundo meus estudos em Python, banco de dados e segurança da informação.
 
 Minha trajetória começou em **Customer Experience**, experiência que trouxe uma perspectiva importante para o desenvolvimento: compreender os problemas de quem utiliza um sistema. Hoje transformo essa visão em projetos web, ferramentas operacionais e produtos digitais em evolução.
