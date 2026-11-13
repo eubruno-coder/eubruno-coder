@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Portfólio profissional de Bruno Silva — Cloud, DevOps, infraestrutura e desenvolvimento.">
+  <title>Bruno Silva | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <script type="module" src="./src/js/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/inicio" aria-label="Bruno Silva, início">
+        <span class="brand-mark">BS</span><span class="brand-name">Bruno Silva<small>PORTFÓLIO PROFISSIONAL</small></span>
+      </a>
+      <div class="sidebar-label">MENU PRINCIPAL</div>
+      <nav class="nav-list" aria-label="Navegação principal">
+        <a href="#/inicio" data-route="inicio"><span class="nav-icon">⌂</span>Início</a>
+        <a href="#/sobre" data-route="sobre"><span class="nav-icon">◎</span>Sobre mim</a>
+        <a href="#/formacao" data-route="formacao"><span class="nav-icon">▤</span>Formação</a>
+        <a href="#/conhecimentos" data-route="conhecimentos"><span class="nav-icon">◇</span>Conhecimentos</a>
+        <a href="#/projetos" data-route="projetos"><span class="nav-icon">▦</span>Projetos</a>
+        <a href="#/opensource" data-route="opensource"><span class="nav-icon">⌘</span>Open Source</a>
+        <a href="#/experiencia" data-route="experiencia"><span class="nav-icon">▣</span>Experiência</a>
+        <a href="#/contato" data-route="contato"><span class="nav-icon">↗</span>Contato</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="availability"><span class="status-dot"></span><span><strong>Em evolução contínua</strong><small>Aprendizado e projetos</small></span></div>
+        <a class="github-link" href="https://github.com/eubruno-coder" target="_blank" rel="noreferrer">↗ GitHub</a>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumb"><span>Portfólio</span><span class="crumb-sep">/</span><strong id="page-name">Início</strong></div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema"><span id="theme-icon">☾</span><span id="theme-label">Tema escuro</span></button>
+      </header>
+      <div id="app" class="page-content" aria-live="polite">
+        <section class="welcome-panel"><span class="eyebrow">PORTFÓLIO PROFISSIONAL</span><h1>Construindo soluções.<br><span>Conectando tecnologia e propósito.</span></h1><p>Cloud · DevOps · Infraestrutura · Desenvolvimento</p></section>
+      </div>
+      <footer class="footer"><span>© <span id="year"></span> Bruno Silva</span><span>Feito com propósito e tecnologia.</span></footer>
+    </main>
+  </div>
+</body>
+</html>
