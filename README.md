@@ -17,22 +17,26 @@ Minha trajetória começou em **Customer Experience**, experiência que trouxe u
 ## 💼 O que eu construo
 
 - **Experiências digitais para negócios:** sites, portfólios e interfaces responsivas.
-- **Sistemas operacionais:** ferramentas para organizar informações, atendimentos e pedidos.
-- **Produtos em evolução:** experimentação com arquitetura de aplicações, integrações e modelos SaaS.
+- **Sistemas operacionais:** ferramentas para organizar informações, fluxos de atendimento, pedidos e operações.
+- **Produtos em evolução:** plataformas para compras públicas, arquitetura de aplicações, integrações e modelos SaaS.
 - **Laboratórios técnicos:** infraestrutura, Cloud Computing e automação.
 
-## 🚀 Projetos em destaque
+## 🚀 Projetos em andamento
 
-| Projeto | O que resolve | Situação |
+| Projeto | Objetivo | Situação |
 | --- | --- | --- |
-| [**Delivery / Cardápio Online**](https://github.com/eubruno-coder/menu_lanchonete) | Jornada de pedido mobile-first, checkout e envio de comanda pelo WhatsApp; base para evolução de uma plataforma de gestão de pedidos. | Em desenvolvimento |
-| [**Laboratório Delivery**](https://github.com/eubruno-coder/delivery-laboratorio) | Ambiente de experimentação de funcionalidades e fluxos operacionais para um futuro SaaS. | Laboratório |
-| [**NCroch's**](https://github.com/eubruno-coder/site_ncrochs) | Portfólio digital de uma marca de crochê, com identidade visual própria e exposição de criações. | Projeto para negócio real |
-| [**PortalClima**](https://github.com/eubruno-coder/portalclima) | Experiência web com informações meteorológicas e interface visual dinâmica. | Projeto web |
+| [**LicitaRadar**](https://github.com/eubruno-coder/licitaradar) | Plataforma de inteligência em compras públicas para assessores e empresas fornecedoras, com foco em descoberta e análise de editais apoiada por IA. | Fundação e arquitetura do MVP |
+| [**Portal de Pedidos**](https://github.com/eubruno-coder/menu_lanchonete) | Experiência mobile-first de cardápio, personalização, checkout e envio de pedidos pelo WhatsApp, com visão de evolução para SaaS. | V0.3 — evolução funcional |
+| [**Delivery — Laboratório de Integração**](https://github.com/eubruno-coder/delivery-laboratorio) | Ambiente separado para homologar fluxo de pedidos, painel operacional e sincronização entre dispositivos. | Laboratório — validação manual pendente |
+| [**NCroch's — Portfólio Digital**](https://github.com/eubruno-coder/site_ncrochs) | Site institucional e vitrine digital para uma marca de peças artesanais em crochê, com identidade visual própria. | Construção e evolução do portfólio |
 
-### 🛠️ Outros projetos e experiências
+### 🌐 Outros projetos públicos
 
-Também desenvolvo e documento experiências com **sistemas de escalas**, **interfaces operacionais**, **Linux**, **AWS**, **Nginx**, **automação** e estudos de infraestrutura. Esses trabalhos complementam minha atuação em desenvolvimento de aplicações.
+Além dos projetos em desenvolvimento ativo, mantenho experiências e laboratórios públicos em aplicações web, produtividade, meteorologia, Linux e infraestrutura:
+
+- [**PortalClima**](https://github.com/eubruno-coder/portalclima) — consulta meteorológica com busca por cidade, geolocalização e previsões.
+- [**Minha Compra**](https://github.com/eubruno-coder/compras) — lista de compras mobile-first com cálculo automático e armazenamento local.
+- [**Nginx Status Monitor**](https://github.com/eubruno-coder/Project_nginx) — automação Bash para verificar o serviço Nginx, registrar logs e gerar relatório HTML.
 
 ## 🧰 Tecnologias e áreas de estudo
 
