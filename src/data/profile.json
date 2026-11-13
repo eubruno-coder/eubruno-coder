@@ -3,6 +3,63 @@
   "displayName": "Bruno Silva",
   "headline": "Cloud | DevOps | Infraestrutura | AWS",
   "github": "https://github.com/eubruno-coder",
+  "linkedin": "https://linkedin.com/in/bruno-pereirasilva",
+  "email": "bruno_silvap@outlook.com",
   "portfolioTitle": "Bruno Silva | Portfólio",
-  "language": "pt-BR"
+  "language": "pt-BR",
+  "education": [
+    {
+      "course": "Gestão da Tecnologia da Informação",
+      "institution": "UNIASSELVI",
+      "period": "2025",
+      "status": "concluído"
+    },
+    {
+      "course": "Pós-graduação em Python",
+      "status": "em andamento"
+    }
+  ],
+  "skills": {
+    "Cloud e infraestrutura": [
+      "AWS",
+      "Kubernetes (EKS)",
+      "CloudWatch",
+      "Linux",
+      "Docker"
+    ],
+    "DevOps e automação": [
+      "CI/CD",
+      "GitHub Actions",
+      "Shell Script",
+      "IaC",
+      "Git"
+    ],
+    "Em estudo": [
+      "Python",
+      "Prometheus",
+      "Grafana"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Compass UOL",
+      "role": "Estagiário DevSecOps | Cloud AWS",
+      "period": "set/2024 – fev/2025"
+    },
+    {
+      "company": "Teleperformance",
+      "role": "Expert em Interação",
+      "period": "mar/2023 – jun/2025"
+    },
+    {
+      "company": "Speedmais",
+      "role": "Operador de Telemarketing",
+      "period": "dez/2025 – set/2026"
+    }
+  ],
+  "courses": [
+    "LPI Linux Essentials",
+    "Linux Completo + Servidores",
+    "AWS DevOps & CI/CD"
+  ]
 }
