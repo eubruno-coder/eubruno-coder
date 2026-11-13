@@ -1,0 +1,9 @@
+[
+  {"name":"LicitaRadar","description":"Plataforma em planejamento para inteligência em compras públicas, com foco em análise assistida de editais.","url":"https://github.com/eubruno-coder/licitaradar","tags":["Produto digital","IA aplicada","Em planejamento"],"type":"original"},
+  {"name":"Portal de Pedidos","description":"Cardápio digital mobile-first com personalização de produtos, carrinho e fluxo de pedidos via WhatsApp.","url":"https://github.com/eubruno-coder/menu_lanchonete","tags":["HTML","CSS","JavaScript"],"type":"original"},
+  {"name":"Delivery Laboratório","description":"Ambiente experimental para testar fluxos operacionais e evolução de uma solução de pedidos.","url":"https://github.com/eubruno-coder/delivery-laboratorio","tags":["Experimentos","Web"],"type":"study"},
+  {"name":"NCroch's","description":"Site institucional e vitrine digital para um pequeno negócio de peças artesanais em crochê.","url":"https://github.com/eubruno-coder/site_ncrochs","tags":["Web","Institucional"],"type":"original"},
+  {"name":"PortalClima","description":"Painel de consulta meteorológica com busca por cidade e recursos de localização.","url":"https://github.com/eubruno-coder/portalclima","tags":["Web","API"],"type":"original"},
+  {"name":"Minha Compra","description":"Aplicação de lista de compras com foco em uso simples e experiência mobile.","url":"https://github.com/eubruno-coder/compras","tags":["JavaScript","Mobile-first"],"type":"original"},
+  {"name":"Nginx Status Monitor","description":"Script Bash para monitoramento de Nginx em Linux, geração de logs e relatório HTML.","url":"https://github.com/eubruno-coder/Project_nginx","tags":["Bash","Linux","Nginx"],"type":"original"}
+]
