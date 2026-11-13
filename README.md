@@ -21,22 +21,108 @@ Minha trajetória começou em **Customer Experience**, experiência que trouxe u
 - **Produtos em evolução:** plataformas para compras públicas, arquitetura de aplicações, integrações e modelos SaaS.
 - **Laboratórios técnicos:** infraestrutura, Cloud Computing e automação.
 
-## 🚀 Projetos em andamento
+## 🚀 Projetos em destaque
 
-| Projeto | Objetivo | Situação |
-| --- | --- | --- |
-| [**LicitaRadar**](https://github.com/eubruno-coder/licitaradar) | Plataforma de inteligência em compras públicas para assessores e empresas fornecedoras, com foco em descoberta e análise de editais apoiada por IA. | Fundação e arquitetura do MVP |
-| [**Portal de Pedidos**](https://github.com/eubruno-coder/menu_lanchonete) | Experiência mobile-first de cardápio, personalização, checkout e envio de pedidos pelo WhatsApp, com visão de evolução para SaaS. | V0.3 — evolução funcional |
-| [**Delivery — Laboratório de Integração**](https://github.com/eubruno-coder/delivery-laboratorio) | Ambiente separado para homologar fluxo de pedidos, painel operacional e sincronização entre dispositivos. | Laboratório — validação manual pendente |
-| [**NCroch's — Portfólio Digital**](https://github.com/eubruno-coder/site_ncrochs) | Site institucional e vitrine digital para uma marca de peças artesanais em crochê, com identidade visual própria. | Construção e evolução do portfólio |
+Projetos públicos que representam meu foco atual: produtos digitais, aplicações web e ferramentas operacionais. Os cards indicam o estágio real de cada iniciativa — funcionalidades planejadas não são apresentadas como entregas concluídas.
 
-### 🌐 Outros projetos públicos
+### Em desenvolvimento
 
-Além dos projetos em desenvolvimento ativo, mantenho experiências e laboratórios públicos em aplicações web, produtividade, meteorologia, Linux e infraestrutura:
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🎯 LicitaRadar</h3>
+      <p>Plataforma de inteligência em compras públicas para assessores e empresas fornecedoras, com foco em descoberta de oportunidades e análise de editais apoiada por IA.</p>
+      <p>
+        <img src="https://img.shields.io/badge/status-arquitetura%20do%20MVP-orange" alt="Status: arquitetura do MVP">
+        <img src="https://img.shields.io/badge/IA-análise%20de%20editais-7B61FF" alt="IA: análise de editais">
+      </p>
+      <p>
+        <img src="https://img.shields.io/badge/React%20%7C%20TypeScript-planned-3178C6" alt="React e TypeScript planejados">
+        <img src="https://img.shields.io/badge/Python%20%7C%20FastAPI-planned-3776AB" alt="Python e FastAPI planejados">
+        <img src="https://img.shields.io/badge/PostgreSQL-planned-4169E1" alt="PostgreSQL planejado">
+      </p>
+      <p><a href="https://github.com/eubruno-coder/licitaradar">Ver repositório →</a> · MVP em planejamento e validação de fontes oficiais.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🛍️ Portal de Pedidos</h3>
+      <p>Cardápio digital mobile-first com personalização de produtos, carrinho, checkout e preparação de comanda para envio pelo WhatsApp. Evolução planejada para uma plataforma de gestão de pedidos.</p>
+      <p>
+        <img src="https://img.shields.io/badge/status-em%20desenvolvimento-orange" alt="Status: em desenvolvimento">
+        <img src="https://img.shields.io/badge/versão-V0.3-blue" alt="Versão V0.3">
+      </p>
+      <p>
+        <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" alt="HTML5">
+        <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white" alt="CSS3">
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+      </p>
+      <p><a href="https://eubruno-coder.github.io/menu_lanchonete/">Ver demonstração →</a> · <a href="https://github.com/eubruno-coder/menu_lanchoneta">Código-fonte</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>📦 Delivery — Laboratório de Integração</h3>
+      <p>Ambiente isolado para homologar fluxo de pedidos, painel Kanban, transições de status e sincronização entre dispositivos. Não é ambiente de produção.</p>
+      <p>
+        <img src="https://img.shields.io/badge/status-homologação-orange" alt="Status: homologação">
+        <img src="https://img.shields.io/badge/versão-V0.4-blue" alt="Versão V0.4">
+      </p>
+      <p>
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+        <img src="https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white" alt="Supabase">
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL">
+      </p>
+      <p><a href="https://eubruno-coder.github.io/delivery-laboratorio/">Abrir laboratório →</a> · <a href="https://github.com/eubruno-coder/delivery-laboratorio">Código-fonte</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🧶 NCroch's — Portfólio Digital</h3>
+      <p>Site institucional e vitrine digital para uma marca de peças artesanais em crochê, com identidade visual própria, apresentação de coleções e estrutura responsiva.</p>
+      <p>
+        <img src="https://img.shields.io/badge/status-em%20desenvolvimento-orange" alt="Status: em desenvolvimento">
+        <img src="https://img.shields.io/badge/versão-V1-blue" alt="Versão V1">
+      </p>
+      <p>
+        <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" alt="HTML5">
+        <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white" alt="CSS3">
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+      </p>
+      <p><a href="https://github.com/eubruno-coder/site_ncrochs">Ver repositório →</a> · Site em construção.</p>
+    </td>
+  </tr>
+</table>
 
-- [**PortalClima**](https://github.com/eubruno-coder/portalclima) — consulta meteorológica com busca por cidade, geolocalização e previsões.
-- [**Minha Compra**](https://github.com/eubruno-coder/compras) — lista de compras mobile-first com cálculo automático e armazenamento local.
-- [**Nginx Status Monitor**](https://github.com/eubruno-coder/Project_nginx) — automação Bash para verificar o serviço Nginx, registrar logs e gerar relatório HTML.
+### Outros projetos públicos
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3>🌦️ PortalClima</h3>
+      <p>Dashboard meteorológico com busca por cidade, geolocalização, previsão horária e previsão de 7 dias.</p>
+      <p>
+        <img src="https://img.shields.io/badge/versão-V1-blue" alt="Versão V1"><br>
+        <img src="https://img.shields.io/badge/HTML%20%7C%20CSS%20%7C%20JS-web-yellow" alt="HTML CSS JavaScript">
+      </p>
+      <p><a href="https://github.com/eubruno-coder/portalclima">Repositório →</a></p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>🛒 Minha Compra</h3>
+      <p>Aplicação mobile-first para organizar produtos, quantidades, preços e total da compra, com persistência local.</p>
+      <p>
+        <img src="https://img.shields.io/badge/versão-V1.0.0-blue" alt="Versão V1.0.0"><br>
+        <img src="https://img.shields.io/badge/HTML%20%7C%20CSS%20%7C%20JS-web-yellow" alt="HTML CSS JavaScript">
+      </p>
+      <p><a href="https://github.com/eubruno-coder/compras">Repositório →</a></p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>⚙️ Nginx Status Monitor</h3>
+      <p>Script Bash para monitorar o serviço Nginx em Linux, registrar logs e gerar relatório HTML, com execução agendada por Cron.</p>
+      <p>
+        <img src="https://img.shields.io/badge/status-projeto%20técnico-blue" alt="Projeto técnico"><br>
+        <img src="https://img.shields.io/badge/Bash%20%7C%20Linux%20%7C%20Nginx-black" alt="Bash Linux Nginx">
+      </p>
+      <p><a href="https://github.com/eubruno-coder/Project_nginx">Repositório →</a></p>
+    </td>
+  </tr>
+</table>
 
 ## 🧰 Tecnologias e áreas de estudo
 
