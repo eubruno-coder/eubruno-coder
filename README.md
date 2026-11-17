@@ -124,6 +124,18 @@ Projetos públicos que representam meu foco atual: produtos digitais, aplicaçõ
   </tr>
 </table>
 
+## 🧪 Outros projetos e laboratórios técnicos
+
+Além dos produtos em desenvolvimento, mantenho repositórios de estudo que registram práticas de arquitetura, infraestrutura, automação e integração de dados.
+
+| Projeto | Escopo | Estado documentado |
+|---|---|---|
+| [Media Hub](https://github.com/eubruno-coder/media-hub) | Aplicativo desktop multimídia com C#, Avalonia UI e LibVLCSharp. | Alpha; build e reprodução no Windows pendentes de validação. |
+| [Projeto Compass 02](https://github.com/eubruno-coder/Projeto-Compass-02) | Laboratório de WordPress conteinerizado em arquitetura AWS. | Laboratório acadêmico documentado. |
+| [Projeto Final AWS](https://github.com/eubruno-coder/Projeto-Final) | Proposta de migração e modernização de arquitetura legada para AWS. | Arquitetura proposta e documentada; não representa infraestrutura implantada. |
+| [Monitor Financeiro](https://github.com/eubruno-coder/monitor-financeiro) | Dashboard estático que consulta dados tabulares do Google Sheets. | V1 de teste; leitura pública, sem backend. |
+| [Nginx Status Monitor](https://github.com/eubruno-coder/Project_nginx) | Automação Bash para consulta de serviço e geração de relatório. | Protótipo didático; revisão técnica pendente. |
+
 ## 🧰 Tecnologias e áreas de estudo
 
 **Desenvolvimento web:** HTML, CSS e JavaScript.
