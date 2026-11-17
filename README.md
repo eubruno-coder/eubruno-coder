@@ -33,7 +33,7 @@ Projetos públicos que representam meu foco atual: produtos digitais, aplicaçõ
       <h3>🎯 LicitaRadar</h3>
       <p>Plataforma de inteligência em compras públicas para assessores e empresas fornecedoras, com foco em descoberta de oportunidades e análise de editais apoiada por IA.</p>
       <p>
-        <img src="https://img.shields.io/badge/status-arquitetura%20do%20MVP-orange" alt="Status: arquitetura do MVP">
+        <img src="https://img.shields.io/badge/status-backend%20MVP-orange" alt="Status: arquitetura do MVP">
         <img src="https://img.shields.io/badge/IA-análise%20de%20editais-7B61FF" alt="IA: análise de editais">
       </p>
       <p>
@@ -41,7 +41,7 @@ Projetos públicos que representam meu foco atual: produtos digitais, aplicaçõ
         <img src="https://img.shields.io/badge/Python%20%7C%20FastAPI-planned-3776AB" alt="Python e FastAPI planejados">
         <img src="https://img.shields.io/badge/PostgreSQL-planned-4169E1" alt="PostgreSQL planejado">
       </p>
-      <p><a href="https://github.com/eubruno-coder/licitaradar">Ver repositório →</a> · MVP em planejamento e validação de fontes oficiais.</p>
+      <p><a href="https://github.com/eubruno-coder/licitaradar">Ver repositório →</a> · API inicial em FastAPI com busca ao PNCP; frontend, persistência e IA ainda planejados.</p>
     </td>
     <td width="50%" valign="top">
       <h3>🛍️ Portal de Pedidos</h3>
