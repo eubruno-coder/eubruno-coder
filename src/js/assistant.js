@@ -169,7 +169,7 @@ function showChips(items) {
     chip.type = "button";
     chip.className = "assistant-chip";
     chip.textContent = label;
-    chip.addEventListener("click", () => sendMessage(label));
+    chip.addEventListener("click", () => { input.value = label; form.requestSubmit(); });
     wrap.append(chip);
   });
   messages.append(wrap);
@@ -201,7 +201,7 @@ form.addEventListener("submit", async event => {
     typing.hidden = false;
     window.setTimeout(() => {
       const answer = fallbackReply(message);
-      const isProjects = /(projeto|repositorio|github|portfolio)/.test(message.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase());
+      const isProjects = /(projet|repositorio|repositório|github|portfolio|portfólio)/i.test(message);
       addMessage("bot", answer, isProjects);
       busy = false;
       send.disabled = false;
