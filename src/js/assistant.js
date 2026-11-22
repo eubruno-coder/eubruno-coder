@@ -71,9 +71,9 @@ const history = [];
 let busy = false;
 
 function fallbackReply(question) {
-  const q = question.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase();
+  const q = question.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  if (/^(oi|ola|bom dia|boa tarde|boa noite| tudo bem)/.test(q)) {
+  if (/^(oi|ola|bom dia|boa tarde|boa noite|tudo bem)/.test(q)) {
     return "Olá! 👋 Posso ajudar você a conhecer o portfólio. Pergunte sobre projetos, experiência, formação, tecnologias ou formas de contato.";
   }
   if (/(projeto|repositorio|github|portfolio)/.test(q)) {
