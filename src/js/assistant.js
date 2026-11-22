@@ -159,19 +159,20 @@ function addMessage(role, text, showProjects = false) {
   messages.scrollTop = messages.scrollHeight;
 }
 
-function streamMessage(text, done) {
-  const item = document.createElement('div');
-  item.className = 'assistant-message bot';
-  messages.append(item);
+function streamMessage(text, done, existingItem = null) {
+  const item = existingItem || document.createElement("div");
+  item.className = "assistant-message bot";
+  if (!existingItem) messages.append(item);
+  item.textContent = "";
   let index = 0;
   function step() {
-    index = Math.min(index + (text.length > 220 ? 4 : 3), text.length);
+    index = Math.min(index + (text.length > 220 ? 5 : 3), text.length);
     item.textContent = text.slice(0, index);
     messages.scrollTop = messages.scrollHeight;
-    if (index < text.length) window.setTimeout(step, 17);
+    if (index < text.length) window.setTimeout(step, 22);
     else done();
   }
-  window.setTimeout(step, 160);
+  step();
 }
 
 function addProjectCards() {
@@ -236,9 +237,14 @@ form.addEventListener("submit", async event => {
     busy = true;
     send.disabled = true;
     typing.hidden = false;
+    const pending = document.createElement("div");
+    pending.className = "assistant-message bot";
+    pending.textContent = "Estou organizando as informações…";
+    messages.append(pending);
+    messages.scrollTop = messages.scrollHeight;
     const answer = fallbackReply(message);
     const isProjects = /(projet|repositorio|repositório|github|portfolio|portfólio)/i.test(message);
-    const thinkingTime = Math.min(1100, 420 + message.length * 9);
+    const thinkingTime = Math.min(850, 350 + message.length * 7);
     window.setTimeout(() => {
       typing.hidden = true;
       streamMessage(answer, () => {
@@ -247,7 +253,7 @@ form.addEventListener("submit", async event => {
         send.disabled = false;
         showChips(isProjects ? ["Como funciona o LicitaRadar?", "Quais tecnologias aparecem?"] : ["Ver projetos", "Conhecer a trajetória", "Falar com Bruno"]);
         input.focus();
-      });
+      }, pending);
     }, thinkingTime);
     return;
   }
