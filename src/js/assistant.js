@@ -1,54 +1,94 @@
-// Assistente FAQ com respostas guiadas e interações locais.\nconst ASSISTANT_ENDPOINT = "";
+// FAQ interativa do portfólio: respostas locais, selecionadas pelo visitante.
+const faqGroups = [
+  {id:"sobre",label:"Sobre",questions:[
+    {q:"Quem é Bruno Silva?",a:"Bruno é um profissional em transição e desenvolvimento de carreira na área de tecnologia, com direcionamento para Cloud, desenvolvimento e infraestrutura. Este workspace reúne sua trajetória, estudos e projetos públicos."},
+    {q:"Qual é seu objetivo profissional?",a:"O foco atual é evoluir na área de Cloud, ampliando conhecimentos em desenvolvimento, infraestrutura e práticas DevOps. O posicionamento é de aspirante a Cloud, sem apresentar estudos como experiência profissional."},
+    {q:"O que encontro nesta plataforma?",a:"Você pode explorar o perfil profissional, os estudos em Cloud, o Development Lab, os projetos, os repositórios públicos do GitHub, a formação, a experiência e os canais de contato."}
+  ]},
+  {id:"projetos",label:"Projetos",questions:[
+    {q:"Quais projetos estão em destaque?",a:"Entre as iniciativas públicas estão LicitaRadar, Menu Lanchonete, NCroch’s, Delivery Laboratório e outros projetos e laboratórios. Consulte a área Projetos para ver descrições, tecnologias e links atualizados."},
+    {q:"O que é o LicitaRadar?",a:"É um buscador regional de editais de compras públicas, em desenvolvimento. A proposta inclui localizar oportunidades e facilitar a compreensão dos editais."},
+    {q:"Os projetos estão todos concluídos?",a:"Não. O catálogo diferencia projetos em desenvolvimento, protótipos, estudos e laboratórios. O status apresentado em cada cartão indica o estágio informado."},
+    {q:"Onde posso ver o código-fonte?",a:"Abra a área Projetos para acessar os links de cada iniciativa ou use o módulo GitHub Explorer para consultar os repositórios públicos diretamente no GitHub."}
+  ]},
+  {id:"tecnologias",label:"Tecnologias",questions:[
+    {q:"Quais tecnologias aparecem no portfólio?",a:"O portfólio reúne temas como AWS, Linux, Docker, Kubernetes (EKS), CloudWatch, Git, GitHub Actions, CI/CD, Shell Script, HTML, CSS, JavaScript, Python e FastAPI. A aplicação indica quando um tema está em estudo."},
+    {q:"Bruno tem experiência profissional com AWS?",a:"Bruno teve experiência como estagiário na Compass UOL em atividades relacionadas a DevSecOps e Cloud AWS. Essa passagem é apresentada como estágio, não como cargo pleno."},
+    {q:"Python e Prometheus são experiência profissional?",a:"Python está relacionado à formação e aos estudos em desenvolvimento. Prometheus e Grafana são conhecimentos estudados; não são apresentados como ferramentas aplicadas em experiência profissional."}
+  ]},
+  {id:"formacao",label:"Formação",questions:[
+    {q:"Qual é a formação acadêmica?",a:"Bruno concluiu Gestão da Tecnologia da Informação pela UNIASSELVI em 2025."},
+    {q:"Está cursando alguma pós-graduação?",a:"Sim. Está cursando pós-graduação Lato Sensu em Desenvolvimento de Sistemas com Python pela UNIASSELVI."},
+    {q:"Quais estudos complementares estão listados?",a:"O perfil também apresenta estudos e formações complementares em Linux, servidores, AWS, DevOps e CI/CD. Consulte a seção Formação para os detalhes publicados."}
+  ]},
+  {id:"experiencia",label:"Experiência",questions:[
+    {q:"Qual foi sua experiência em tecnologia?",a:"Na Compass UOL, Bruno atuou como estagiário em atividades relacionadas a DevSecOps e Cloud AWS, entre setembro de 2024 e fevereiro de 2025, com contato com Kubernetes (EKS), Shell Script, CloudWatch e pipelines CI/CD."},
+    {q:"Sua trajetória se limita à tecnologia?",a:"Não. A trajetória também inclui atendimento, suporte técnico, relacionamento com clientes, operações, supervisão de equipes e atividades comerciais."},
+    {q:"Onde vejo o histórico profissional?",a:"Acesse a seção Experiência no menu lateral. Ela apresenta as empresas, funções, períodos e principais atividades informadas."}
+  ]},
+  {id:"contato",label:"Contato",questions:[
+    {q:"Como entrar em contato?",a:"Você pode utilizar os canais profissionais: e-mail bruno_silvap@outlook.com, LinkedIn linkedin.com/in/bruno-pereirasilva e GitHub github.com/eubruno-coder."},
+    {q:"Onde encontro o LinkedIn?",a:"Acesse linkedin.com/in/bruno-pereirasilva ou abra a seção Contato nesta plataforma."},
+    {q:"Onde encontro o GitHub?",a:"Acesse github.com/eubruno-coder ou utilize o módulo GitHub Explorer para navegar pelos repositórios públicos."}
+  ]}
+];
 
-const styles = `
+const styles = \`
   .assistant-launcher{position:fixed;right:24px;bottom:24px;z-index:30;display:flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(167,139,250,.42);border-radius:999px;background:linear-gradient(110deg,#713cff,#168bff);color:#fff;font:700 13px "DM Sans",sans-serif;box-shadow:0 12px 34px rgba(45,55,160,.34);cursor:pointer;transition:transform .2s,box-shadow .2s}
   .assistant-launcher:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(45,55,160,.44)}
-  .assistant-launcher:focus-visible,.assistant-send:focus-visible,.assistant-close:focus-visible,.assistant-input:focus-visible{outline:3px solid #a78bfa;outline-offset:3px}
+  .assistant-launcher:focus-visible,.assistant-close:focus-visible,.faq-category:focus-visible,.faq-question:focus-visible{outline:3px solid #a78bfa;outline-offset:3px}
   .assistant-launcher-mark{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#ffffff26;font-size:16px}
-  .assistant-panel{position:fixed;right:24px;bottom:88px;z-index:31;display:none;flex-direction:column;width:min(390px,calc(100vw - 32px));height:min(560px,calc(100dvh - 120px));overflow:hidden;border:1px solid var(--line,#263451);border-radius:20px;background:var(--panel,#111a32);color:var(--text,#f4f7ff);box-shadow:0 24px 70px #0007}
+  .assistant-panel{position:fixed;right:24px;bottom:88px;z-index:31;display:none;flex-direction:column;width:min(440px,calc(100vw - 32px));height:min(650px,calc(100dvh - 112px));min-height:300px;overflow:hidden;border:1px solid var(--line,#263451);border-radius:20px;background:var(--panel,#111a32);color:var(--text,#f4f7ff);box-shadow:0 24px 70px #0007}
   .assistant-panel.is-open{display:flex;animation:assistant-enter .18s ease-out}
   @keyframes assistant-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  .assistant-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line,#263451);background:linear-gradient(110deg,#713cff20,#168bff12)}
-  .assistant-identity{display:flex;align-items:center;gap:11px}
-  .assistant-avatar{position:relative;box-shadow:0 0 0 5px #713cff13;animation:assistant-glow 2.8s ease-in-out infinite alternate}
-  @keyframes assistant-glow{from{filter:drop-shadow(0 0 2px #8b72ff55)}to{filter:drop-shadow(0 0 10px #8b72ffbb)}}
-  .assistant-avatar:after{content:"";position:absolute;inset:-4px;border:1px solid #8b72ff66;border-radius:17px;animation:assistant-pulse 2.8s ease-out infinite}
-  @keyframes assistant-pulse{0%{transform:scale(.92);opacity:.8}75%,100%{transform:scale(1.22);opacity:0}}
-  .assistant-avatar{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#713cff,#168bff);color:white;font-size:18px}
+  .assistant-head{display:flex;flex:0 0 auto;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line,#263451);background:linear-gradient(110deg,#713cff20,#168bff12)}
+  .assistant-identity{display:flex;min-width:0;align-items:center;gap:11px}
+  .assistant-avatar{display:grid;flex:0 0 38px;place-items:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#713cff,#168bff);color:white;font-size:18px;box-shadow:0 0 0 5px #713cff13}
   .assistant-head strong{display:block;font:800 14px Manrope,sans-serif}
-  .assistant-head small{display:flex;align-items:center;gap:6px;margin-top:4px;color:var(--muted,#a7b4cc);font-size:11px}
-  .assistant-status{width:6px;height:6px;border-radius:50%;background:#45d49a;box-shadow:0 0 8px #45d49a99}
-  .assistant-close{width:34px;height:34px;border:1px solid var(--line,#263451);border-radius:10px;background:transparent;color:inherit;font-size:20px;cursor:pointer}
-  .assistant-messages{display:flex;flex:1;flex-direction:column;gap:12px;overflow-y:auto;padding:17px}
-  .assistant-message{max-width:88%;padding:11px 13px;border:1px solid var(--line,#263451);border-radius:14px;background:var(--panel-2,#172342);font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
-  .assistant-message.user{align-self:flex-end;border-color:#713cff55;background:linear-gradient(120deg,#713cff2b,#168bff1b)}
-  .assistant-message.bot{align-self:flex-start;border-bottom-left-radius:5px}
-  .assistant-message.user{border-bottom-right-radius:5px}
-  .assistant-message{animation:assistant-message-in .28s ease both}
-  @keyframes assistant-message-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-  .assistant-chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 2px;animation:assistant-message-in .35s ease both}
-  .assistant-chip{padding:8px 10px;border:1px solid #8064ff66;border-radius:999px;background:#713cff13;color:var(--text,#f4f7ff);font:600 11px "DM Sans",sans-serif;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
-  .assistant-chip:hover{transform:translateY(-1px);border-color:#9b85ff;background:#713cff2b}
-  .assistant-projects{display:grid;gap:8px;margin-top:10px}
-  .assistant-project-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;border:1px solid #6476a533;border-radius:12px;background:linear-gradient(110deg,#ffffff08,#713cff0b);text-decoration:none!important;color:inherit!important;transition:border-color .18s,transform .18s}
-  .assistant-project-card:hover{transform:translateY(-2px);border-color:#8b72ff99}
-  .assistant-project-card strong{display:block;font-size:11px}
-  .assistant-project-card small{display:block;margin-top:3px;color:var(--muted,#a7b4cc);font-size:10px;line-height:1.4}
-  .assistant-project-arrow{color:#a78bfa;font-size:17px}
-  .assistant-message a{color:var(--accent-2,#168bff);text-decoration:underline}
-  .assistant-typing{display:flex;align-items:center;gap:8px;color:var(--muted,#a7b4cc);font-size:11px;padding:0 17px 10px}
-  .assistant-typing[hidden]{display:none}
-  .assistant-dots{display:flex;gap:3px}
-  .assistant-dots i{width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:assistant-dot 1s ease-in-out infinite}
-  .assistant-dots i:nth-child(2){animation-delay:.14s}.assistant-dots i:nth-child(3){animation-delay:.28s}
-  @keyframes assistant-dot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-  .assistant-form{display:flex;gap:9px;padding:13px;border-top:1px solid var(--line,#263451)}
-  .assistant-input{flex:1;min-width:0;resize:none;max-height:100px;padding:11px 12px;border:1px solid var(--line,#263451);border-radius:12px;background:var(--bg,#080d1d);color:var(--text,#f4f7ff);font:12px "DM Sans",sans-serif}
-  .assistant-send{width:42px;flex-shrink:0;border:0;border-radius:12px;background:linear-gradient(135deg,#713cff,#168bff);color:white;font-size:18px;cursor:pointer}
-  .assistant-send:disabled{opacity:.45;cursor:not-allowed}
-  @media(max-width:600px){.assistant-launcher{right:16px;bottom:16px;padding:12px 15px}.assistant-panel{right:8px;bottom:76px;width:calc(100vw - 16px);height:min(620px,calc(100dvh - 92px));border-radius:17px}}
-  @media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-panel,.assistant-message,.assistant-chips,.assistant-avatar:after,.assistant-dots i{animation:none!important;transition:none!important}}
-`;
+  .assistant-head small{display:block;margin-top:4px;color:var(--muted,#a7b4cc);font-size:11px;line-height:1.4}
+  .assistant-close{display:grid;flex:0 0 36px;place-items:center;width:36px;height:36px;border:1px solid var(--line,#263451);border-radius:10px;background:transparent;color:inherit;font-size:21px;cursor:pointer}
+  .assistant-intro{flex:0 0 auto;padding:15px 18px 10px}
+  .assistant-intro strong{display:block;font:700 13px Manrope,sans-serif}
+  .assistant-intro p{margin:5px 0 0;color:var(--muted,#a7b4cc);font-size:11px;line-height:1.55}
+  .faq-categories{display:flex;flex:0 0 auto;gap:7px;overflow-x:auto;padding:5px 18px 13px;scrollbar-width:thin;overscroll-behavior-x:contain}
+  .faq-category{flex:0 0 auto;padding:9px 12px;border:1px solid var(--line,#263451);border-radius:999px;background:var(--panel-2,#172342);color:var(--muted,#a7b4cc);font:600 11px "DM Sans",sans-serif;cursor:pointer}
+  .faq-category[aria-pressed="true"]{border-color:#8b72ff;background:#713cff25;color:var(--text,#f4f7ff)}
+  .faq-content{display:flex;flex:1 1 auto;min-height:0;flex-direction:column;gap:12px;overflow-y:auto;padding:4px 18px 18px;overscroll-behavior:contain}
+  .faq-section-label{margin:2px 0 0;color:var(--muted,#a7b4cc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .faq-question-list{display:grid;gap:8px}
+  .faq-question{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border:1px solid var(--line,#263451);border-radius:12px;background:var(--panel-2,#172342);color:var(--text,#f4f7ff);text-align:left;font:600 12px/1.45 "DM Sans",sans-serif;cursor:pointer;transition:border-color .18s,background .18s}
+  .faq-question:hover,.faq-question[aria-pressed="true"]{border-color:#8b72ff99;background:#713cff18}
+  .faq-question span:last-child{flex:0 0 auto;color:#a78bfa;font-size:17px}
+  .faq-answer{padding:15px;border:1px solid #8064ff55;border-radius:14px;background:linear-gradient(130deg,#713cff17,#168bff0b);animation:assistant-enter .18s ease-out}
+  .faq-answer[hidden]{display:none}
+  .faq-answer-label{display:block;margin-bottom:7px;color:#a78bfa;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .faq-answer p{margin:0;color:var(--text,#f4f7ff);font-size:12px;line-height:1.75;overflow-wrap:anywhere}
+  .faq-hint{margin:0;color:var(--muted,#a7b4cc);font-size:10px;line-height:1.5}
+  @media(max-width:600px){
+    .assistant-launcher{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));padding:12px 15px}
+    .assistant-panel{right:0;bottom:0;width:100vw;width:100dvw;height:min(82dvh,720px);max-height:calc(100dvh - env(safe-area-inset-top) - 8px);min-height:280px;border-radius:20px 20px 0 0;border-bottom:0;padding-bottom:env(safe-area-inset-bottom)}
+    .assistant-panel.is-open{animation:assistant-mobile-enter .2s ease-out}
+    @keyframes assistant-mobile-enter{from{opacity:.7;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .assistant-head{padding:13px 16px}
+    .assistant-intro{padding:13px 16px 8px}
+    .faq-categories{padding:5px 16px 12px}
+    .faq-content{padding:4px 16px 16px}
+    .faq-question{padding:13px}
+  }
+  @media(max-width:360px){
+    .assistant-launcher{right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}
+    .assistant-head strong{font-size:13px}
+    .assistant-intro p{font-size:10px}
+    .faq-category{padding:8px 10px;font-size:10px}
+  }
+  @media(max-height:500px) and (max-width:900px){
+    .assistant-panel{height:calc(100dvh - 8px);max-height:calc(100dvh - 8px)}
+    .assistant-intro{padding-top:8px;padding-bottom:5px}
+    .assistant-intro p{display:none}
+    .faq-categories{padding-bottom:7px}
+  }
+  @media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-panel,.faq-answer{animation:none!important;transition:none!important}}
+\`;
 
 const style = document.createElement("style");
 style.textContent = styles;
@@ -59,165 +99,85 @@ launcher.className = "assistant-launcher";
 launcher.type = "button";
 launcher.setAttribute("aria-expanded", "false");
 launcher.setAttribute("aria-controls", "portfolio-assistant");
-launcher.innerHTML = '<span class="assistant-launcher-mark" aria-hidden="true">✦</span><span>Posso ajudar?</span>';
+launcher.innerHTML = '<span class="assistant-launcher-mark" aria-hidden="true">?</span><span>Perguntas frequentes</span>';
 
 const panel = document.createElement("section");
 panel.className = "assistant-panel";
 panel.id = "portfolio-assistant";
-panel.setAttribute("aria-label", "Assistente do portfólio");
-panel.innerHTML = `
+panel.setAttribute("aria-label", "Perguntas frequentes do portfólio");
+panel.innerHTML = \`
   <header class="assistant-head">
-    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">✦</span><span><strong>Assistente</strong><small><i class="assistant-status"></i> Online · pronto para conversar</small></span></div>
-    <button class="assistant-close" type="button" aria-label="Fechar conversa">×</button>
+    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">?</span><span><strong>Central de dúvidas</strong><small>Respostas sobre o conteúdo desta plataforma</small></span></div>
+    <button class="assistant-close" type="button" aria-label="Fechar perguntas frequentes">×</button>
   </header>
-  <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions">
+  <div class="assistant-intro"><strong>O que você gostaria de saber?</strong><p>Selecione um assunto e depois uma pergunta para consultar a resposta.</p></div>
+  <nav class="faq-categories" aria-label="Categorias de perguntas"></nav>
+  <div class="faq-content" aria-live="polite">
+    <p class="faq-section-label">Selecione uma pergunta</p>
+    <div class="faq-question-list"></div>
+    <article class="faq-answer" hidden aria-live="polite"><span class="faq-answer-label">Resposta</span><p></p></article>
+    <p class="faq-hint">As respostas são informações fixas do próprio portfólio e podem ser atualizadas junto com o site.</p>
   </div>
-  <div class="assistant-typing" hidden><span class="assistant-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Preparando uma resposta…</span></div>
-  <form class="assistant-form">
-    <textarea class="assistant-input" rows="1" maxlength="1200" aria-label="Digite sua mensagem" placeholder="Escreva sua pergunta…"></textarea>
-    <button class="assistant-send" type="submit" aria-label="Enviar mensagem">➤</button>
-  </form>
-`;
+\`;
 
 document.body.append(launcher, panel);
-const messages = panel.querySelector(".assistant-messages");
-const form = panel.querySelector(".assistant-form");
-const input = panel.querySelector(".assistant-input");
-const send = panel.querySelector(".assistant-send");
-const typing = panel.querySelector(".assistant-typing");
+const categories = panel.querySelector(".faq-categories");
+const questionList = panel.querySelector(".faq-question-list");
+const answerCard = panel.querySelector(".faq-answer");
+const answerText = answerCard.querySelector("p");
 const close = panel.querySelector(".assistant-close");
-const history = [];
-let busy = false;
-
-const projectData = [
-  { name: "LicitaRadar", detail: "Buscador regional de editais · em desenvolvimento", url: "https://github.com/eubruno-coder/licitaradar" },
-  { name: "Menu Lanchonete", detail: "Protótipo de cardápio digital e pedidos", url: "https://github.com/eubruno-coder/menu_lanchonete" },
-  { name: "NCroch’s", detail: "Site para apresentar criações de crochê", url: "https://github.com/eubruno-coder/site_ncrochs" }
-];
-
-function fallbackReply(question) {
-  const q = question.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-  if (/^(oi|ola|bom dia|boa tarde|boa noite|tudo bem)/.test(q)) {
-    return "Olá! 👋 Posso ajudar você a conhecer o portfólio. Pergunte sobre projetos, experiência, formação, tecnologias ou formas de contato.";
-  }
-  if (/(projeto|repositorio|github|portfolio)/.test(q)) {
-    return "Separei alguns projetos públicos para você conhecer. Cada um mostra uma frente diferente de desenvolvimento:";
-  }
-  if (/(experiencia|trabalhou|trabalho|carreira|compass|estagio|devsecops)/.test(q)) {
-    return "A trajetória combina experiência em atendimento, operações, relacionamento com clientes e supervisão. Na Compass UOL, Bruno atuou como estagiário em atividades relacionadas a DevSecOps e Cloud AWS, entre setembro de 2024 e fevereiro de 2025. O portfólio apresenta essa passagem como estágio, não como cargo pleno.";
-  }
-  if (/(formacao|faculdade|pos graduacao|graduacao|curso|estudo)/.test(q)) {
-    return "Bruno concluiu Gestão da Tecnologia da Informação pela UNIASSELVI em dezembro de 2025 e está cursando a pós-graduação em Desenvolvimento de Sistemas com Python, também pela UNIASSELVI.";
-  }
-  if (/(tecnologia|linguagem|ferramenta|cloud|aws|devops|kubernetes|linux|python)/.test(q)) {
-    return "Entre as tecnologias e temas listados estão AWS, Kubernetes (EKS), CloudWatch, Linux, Docker, CI/CD, GitHub Actions, Shell Script, IaC e Git. Python, Prometheus e Grafana aparecem como conhecimentos em estudo, não como experiência profissional comprovada.";
-  }
-  if (/(contato|email|e-mail|linkedin|contrat|falar com)/.test(q)) {
-    return "Você pode conhecer os canais profissionais pelos links abaixo:\\nGitHub: https://github.com/eubruno-coder\\nLinkedIn: https://linkedin.com/in/bruno-pereirasilva\\nE-mail: bruno_silvap@outlook.com";
-  }
-  if (/(quem e|sobre|bruno)/.test(q)) {
-    return "Bruno Silva é um profissional em transição e desenvolvimento de carreira na área de tecnologia, com direcionamento para Cloud, DevOps e infraestrutura. O portfólio reúne sua formação, experiência profissional e projetos públicos.";
-  }
-  return "Não encontrei uma resposta específica para isso ainda. Posso ajudar com projetos, trajetória profissional, formação, tecnologias ou contato. Qual desses assuntos você quer explorar?";
-}
+let activeGroup = faqGroups[0].id;
 
 function setOpen(open) {
   panel.classList.toggle("is-open", open);
   launcher.setAttribute("aria-expanded", String(open));
-  if (open) input.focus();
-  else launcher.focus();
+  if (!open) launcher.focus({ preventScroll: true });
 }
-function addMessage(role, text, showProjects = false) {
-  const item = document.createElement("div");
-  item.className = `assistant-message ${role}`;
-  item.textContent = text;
-  messages.append(item);
-  if (showProjects) {
-    const cards = document.createElement("div");
-    cards.className = "assistant-projects";
-    projectData.forEach(project => {
-      const link = document.createElement("a");
-      link.className = "assistant-project-card";
-      link.href = project.url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      const copy = document.createElement("span");
-      const title = document.createElement("strong");
-      title.textContent = project.name;
-      const detail = document.createElement("small");
-      detail.textContent = project.detail;
-      copy.append(title, detail);
-      const arrow = document.createElement("span");
-      arrow.className = "assistant-project-arrow";
-      arrow.textContent = "↗";
-      link.append(copy, arrow);
-      cards.append(link);
+
+function renderCategories() {
+  categories.innerHTML = "";
+  faqGroups.forEach(group => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "faq-category";
+    button.textContent = group.label;
+    button.setAttribute("aria-pressed", String(group.id === activeGroup));
+    button.addEventListener("click", () => {
+      activeGroup = group.id;
+      renderCategories();
+      renderQuestions();
     });
-    messages.append(cards);
-  }
-  messages.scrollTop = messages.scrollHeight;
+    categories.append(button);
+  });
 }
 
-function streamMessage(text, done, existingItem = null) {
-  const item = existingItem || document.createElement("div");
-  item.className = "assistant-message bot";
-  if (!existingItem) messages.append(item);
-  item.textContent = "";
-  let index = 0;
-  function step() {
-    index = Math.min(index + (text.length > 220 ? 5 : 3), text.length);
-    item.textContent = text.slice(0, index);
-    messages.scrollTop = messages.scrollHeight;
-    if (index < text.length) window.setTimeout(step, 22);
-    else done();
-  }
-  step();
-}
-
-function addProjectCards() {
-  const cards = document.createElement('div');
-  cards.className = 'assistant-projects';
-  projectData.forEach(project => {
-    const link = document.createElement('a');
-    link.className = 'assistant-project-card';
-    link.href = project.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    const copy = document.createElement('span');
-    const title = document.createElement('strong');
-    title.textContent = project.name;
-    const detail = document.createElement('small');
-    detail.textContent = project.detail;
-    copy.append(title, detail);
-    const arrow = document.createElement('span');
-    arrow.className = 'assistant-project-arrow';
-    arrow.textContent = '↗';
-    link.append(copy, arrow);
-    cards.append(link);
+function renderQuestions() {
+  const group = faqGroups.find(item => item.id === activeGroup) || faqGroups[0];
+  questionList.innerHTML = "";
+  answerCard.hidden = true;
+  answerText.textContent = "";
+  questionList.setAttribute("aria-label", "Perguntas sobre " + group.label);
+  group.questions.forEach(item => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "faq-question";
+    button.setAttribute("aria-pressed", "false");
+    const label = document.createElement("span");
+    label.textContent = item.q;
+    const arrow = document.createElement("span");
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "›";
+    button.append(label, arrow);
+    button.addEventListener("click", () => {
+      questionList.querySelectorAll(".faq-question").forEach(question => question.setAttribute("aria-pressed", "false"));
+      button.setAttribute("aria-pressed", "true");
+      answerText.textContent = item.a;
+      answerCard.hidden = false;
+      answerCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    questionList.append(button);
   });
-  messages.append(cards);
-  messages.scrollTop = messages.scrollHeight;
 }
-function showChips(items) {
-  const wrap = document.createElement("div");
-  wrap.className = "assistant-chips";
-  items.forEach(label => {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "assistant-chip";
-    chip.textContent = label;
-    chip.addEventListener("click", () => { input.value = label; form.requestSubmit(); });
-    wrap.append(chip);
-  });
-  messages.append(wrap);
-  messages.scrollTop = messages.scrollHeight;
-}
-const welcome = document.createElement("div");
-welcome.className = "assistant-message bot";
-welcome.textContent = "Olá! 👋 Eu sou o Assistente do portfólio. Posso ajudar você a explorar os projetos, entender a trajetória e descobrir as tecnologias por trás de cada iniciativa.";
-messages.append(welcome);
-showChips(["Quais projetos ele tem?", "Conhecer sua trajetória", "Quais tecnologias utiliza?"]);
 
 launcher.addEventListener("click", () => setOpen(!panel.classList.contains("is-open")));
 close.addEventListener("click", () => setOpen(false));
@@ -225,64 +185,5 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && panel.classList.contains("is-open")) setOpen(false);
 });
 
-form.addEventListener("submit", async event => {
-  event.preventDefault();
-  const message = input.value.trim();
-  if (!message || busy) return;
-  const oldChips = messages.querySelector(".assistant-chips");
-  if (oldChips) oldChips.remove();
-  addMessage("user", message);
-  input.value = "";
-  if (!ASSISTANT_ENDPOINT) {
-    busy = true;
-    send.disabled = true;
-    typing.hidden = false;
-    const pending = document.createElement("div");
-    pending.className = "assistant-message bot";
-    pending.textContent = "Estou organizando as informações…";
-    messages.append(pending);
-    messages.scrollTop = messages.scrollHeight;
-    const answer = fallbackReply(message);
-    const isProjects = /(projet|repositorio|repositório|github|portfolio|portfólio)/i.test(message);
-    const thinkingTime = Math.min(850, 350 + message.length * 7);
-    window.setTimeout(() => {
-      typing.hidden = true;
-      streamMessage(answer, () => {
-        if (isProjects) addProjectCards();
-        busy = false;
-        send.disabled = false;
-        showChips(isProjects ? ["Como funciona o LicitaRadar?", "Quais tecnologias aparecem?"] : ["Ver projetos", "Conhecer a trajetória", "Falar com Bruno"]);
-        input.focus();
-      }, pending);
-    }, thinkingTime);
-    return;
-  }
-  history.push({ role: "user", content: message });
-  if (history.length > 8) history.splice(0, history.length - 8);
-  busy = true;
-  send.disabled = true;
-  typing.hidden = false;
-  try {
-    const response = await fetch(ASSISTANT_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: history })
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(data.error || "Não foi possível responder agora.");
-    const answer = String(data.reply || "").trim();
-    if (!answer) throw new Error("A resposta veio vazia. Tente novamente.");
-    history.push({ role: "assistant", content: answer });
-    if (history.length > 8) history.splice(0, history.length - 8);
-    addMessage("bot", answer);
-    showChips(["Ver projetos", "Conhecer a trajetória", "Falar com Bruno"]);
-  } catch (error) {
-    history.pop();
-    addMessage("bot", error.message || "Tive um problema de conexão. Tente novamente em instantes.");
-  } finally {
-    busy = false;
-    send.disabled = false;
-    typing.hidden = true;
-    input.focus();
-  }
-});
+renderCategories();
+renderQuestions();
