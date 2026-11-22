@@ -1,97 +1,31 @@
 {
   "name": "Bruno Pereira da Silva",
   "displayName": "Bruno Silva",
-  "headline": "Cloud | DevOps | Infraestrutura | AWS",
+  "headline": "Aspirante a Cloud | Desenvolvimento de Software | Infraestrutura",
   "github": "https://github.com/eubruno-coder",
   "linkedin": "https://linkedin.com/in/bruno-pereirasilva",
   "email": "bruno_silvap@outlook.com",
-  "portfolioTitle": "Bruno Silva | Portfólio",
+  "portfolioTitle": "Bruno Silva Platform",
   "language": "pt-BR",
   "education": [
-    {
-      "course": "Gestão da Tecnologia da Informação",
-      "institution": "UNIASSELVI",
-      "period": "ago/2023 – dez/2025",
-      "status": "concluído"
-    },
-    {
-      "course": "Desenvolvimento de Sistemas com Python",
-      "institution": "UNIASSELVI",
-      "period": "ago/2026",
-      "status": "em andamento"
-    }
+    {"course":"Gestão da Tecnologia da Informação","institution":"UNIASSELVI","period":"ago/2023 – dez/2025","status":"concluído"},
+    {"course":"Desenvolvimento de Sistemas com Python","institution":"UNIASSELVI","period":"ago/2026","status":"em andamento"}
   ],
   "skills": {
-    "Cloud e infraestrutura": [
-      "AWS",
-      "Kubernetes (EKS)",
-      "CloudWatch",
-      "Linux",
-      "Docker"
-    ],
-    "DevOps e automação": [
-      "CI/CD",
-      "GitHub Actions",
-      "Shell Script",
-      "IaC",
-      "Git"
-    ],
-    "Em estudo": [
-      "Python",
-      "Prometheus",
-      "Grafana"
-    ]
+    "Cloud e infraestrutura":["AWS","Kubernetes (EKS)","CloudWatch","Linux","Docker"],
+    "DevOps e automação":["CI/CD","GitHub Actions","Shell Script","IaC","Git"],
+    "Em estudo":["Python","Prometheus","Grafana"]
   },
   "experience": [
-    {
-      "company": "Speedmais",
-      "role": "Operador de telemarketing",
-      "period": "dez/2025 – set/2026"
-    },
-    {
-      "company": "Teleperformance",
-      "role": "Expert em Interação",
-      "period": "mar/2023 – jun/2025"
-    },
-    {
-      "company": "Compass UOL",
-      "role": "Estagiário — DevSecOps | Cloud AWS",
-      "period": "set/2024 – fev/2025"
-    },
-    {
-      "company": "Ativa Solar",
-      "role": "Representante de vendas",
-      "period": "jul/2022 – jan/2023"
-    },
-    {
-      "company": "Ativa Solar",
-      "role": "Assistente administrativo",
-      "period": "abr/2022 – jun/2022"
-    },
-    {
-      "company": "Logos Serviços",
-      "role": "Analista de Relacionamento Operacional",
-      "period": "set/2020 – mar/2022"
-    },
-    {
-      "company": "NeoBPO",
-      "role": "Supervisor de operações",
-      "period": "jan/2019 – jan/2020"
-    },
-    {
-      "company": "NeoBPO",
-      "role": "Agente de Processos e Negócios I",
-      "period": "mai/2015 – dez/2018"
-    },
-    {
-      "company": "Contax S.A.",
-      "role": "Atendimento e Suporte Técnico",
-      "period": "mar/2013 – mai/2014"
-    }
+    {"company":"Speedmais","role":"Operador de telemarketing","period":"dez/2025 – set/2026"},
+    {"company":"Teleperformance","role":"Expert em Interação","period":"mar/2023 – jun/2025"},
+    {"company":"Compass UOL","role":"Estagiário — DevSecOps | Cloud AWS","period":"set/2024 – fev/2025"},
+    {"company":"Ativa Solar","role":"Representante de vendas","period":"jul/2022 – jan/2023"},
+    {"company":"Ativa Solar","role":"Assistente administrativo","period":"abr/2022 – jun/2022"},
+    {"company":"Logos Serviços","role":"Analista de Relacionamento Operacional","period":"set/2020 – mar/2022"},
+    {"company":"NeoBPO","role":"Supervisor de operações","period":"jan/2019 – jan/2020"},
+    {"company":"NeoBPO","role":"Agente de Processos e Negócios I","period":"mai/2015 – dez/2018"},
+    {"company":"Contax S.A.","role":"Atendimento e Suporte Técnico","period":"mar/2013 – mai/2014"}
   ],
-  "courses": [
-    "LPI Linux Essentials",
-    "Linux Completo + Servidores",
-    "AWS DevOps & CI/CD"
-  ]
+  "courses":["LPI Linux Essentials","Linux Completo + Servidores","AWS DevOps & CI/CD"]
 }
