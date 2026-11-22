@@ -68,7 +68,7 @@ panel.id = "portfolio-assistant";
 panel.setAttribute("aria-label", "Assistente do portfólio");
 panel.innerHTML = `
   <header class="assistant-head">
-    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">✦</span><span><strong>Assistente</strong><small><i class="assistant-status"></i> Guia do portfólio · disponível</small></span></div>
+    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">✦</span><span><strong>Assistente</strong><small><i class="assistant-status"></i> Online · pronto para conversar</small></span></div>
     <button class="assistant-close" type="button" aria-label="Fechar conversa">×</button>
   </header>
   <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions">
@@ -78,7 +78,6 @@ panel.innerHTML = `
     <textarea class="assistant-input" rows="1" maxlength="1200" aria-label="Digite sua mensagem" placeholder="Escreva sua pergunta…"></textarea>
     <button class="assistant-send" type="submit" aria-label="Enviar mensagem">➤</button>
   </form>
-  <div class="assistant-disclaimer">Modo temporário sem IA: respostas predefinidas com base nas informações públicas do portfólio.</div>
 `;
 
 document.body.append(launcher, panel);
@@ -121,7 +120,7 @@ function fallbackReply(question) {
   if (/(quem e|sobre|bruno)/.test(q)) {
     return "Bruno Silva é um profissional em transição e desenvolvimento de carreira na área de tecnologia, com direcionamento para Cloud, DevOps e infraestrutura. O portfólio reúne sua formação, experiência profissional e projetos públicos.";
   }
-  return "Ainda não tenho uma resposta predefinida para essa pergunta. Neste modo temporário consigo ajudar com informações sobre projetos, experiência, formação, tecnologias e contato. Para perguntas mais específicas, podemos ativar a IA quando a API estiver configurada.";
+  return "Não encontrei uma resposta específica para isso ainda. Posso ajudar com projetos, trajetória profissional, formação, tecnologias ou contato. Qual desses assuntos você quer explorar?";
 }
 
 function setOpen(open) {
@@ -161,6 +160,45 @@ function addMessage(role, text, showProjects = false) {
   messages.scrollTop = messages.scrollHeight;
 }
 
+function streamMessage(text, done) {
+  const item = document.createElement('div');
+  item.className = 'assistant-message bot';
+  messages.append(item);
+  let index = 0;
+  function step() {
+    index = Math.min(index + (text.length > 220 ? 4 : 3), text.length);
+    item.textContent = text.slice(0, index);
+    messages.scrollTop = messages.scrollHeight;
+    if (index < text.length) window.setTimeout(step, 17);
+    else done();
+  }
+  window.setTimeout(step, 160);
+}
+
+function addProjectCards() {
+  const cards = document.createElement('div');
+  cards.className = 'assistant-projects';
+  projectData.forEach(project => {
+    const link = document.createElement('a');
+    link.className = 'assistant-project-card';
+    link.href = project.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    const copy = document.createElement('span');
+    const title = document.createElement('strong');
+    title.textContent = project.name;
+    const detail = document.createElement('small');
+    detail.textContent = project.detail;
+    copy.append(title, detail);
+    const arrow = document.createElement('span');
+    arrow.className = 'assistant-project-arrow';
+    arrow.textContent = '↗';
+    link.append(copy, arrow);
+    cards.append(link);
+  });
+  messages.append(cards);
+  messages.scrollTop = messages.scrollHeight;
+}
 function showChips(items) {
   const wrap = document.createElement("div");
   wrap.className = "assistant-chips";
@@ -199,16 +237,19 @@ form.addEventListener("submit", async event => {
     busy = true;
     send.disabled = true;
     typing.hidden = false;
+    const answer = fallbackReply(message);
+    const isProjects = /(projet|repositorio|repositório|github|portfolio|portfólio)/i.test(message);
+    const thinkingTime = Math.min(1100, 420 + message.length * 9);
     window.setTimeout(() => {
-      const answer = fallbackReply(message);
-      const isProjects = /(projet|repositorio|repositório|github|portfolio|portfólio)/i.test(message);
-      addMessage("bot", answer, isProjects);
-      busy = false;
-      send.disabled = false;
       typing.hidden = true;
-      showChips(isProjects ? ["Como funciona o LicitaRadar?", "Quais tecnologias aparecem?"] : ["Ver projetos", "Conhecer a trajetória", "Falar com Bruno"]);
-      input.focus();
-    }, 350);
+      streamMessage(answer, () => {
+        if (isProjects) addProjectCards();
+        busy = false;
+        send.disabled = false;
+        showChips(isProjects ? ["Como funciona o LicitaRadar?", "Quais tecnologias aparecem?"] : ["Ver projetos", "Conhecer a trajetória", "Falar com Bruno"]);
+        input.focus();
+      });
+    }, thinkingTime);
     return;
   }
   history.push({ role: "user", content: message });
