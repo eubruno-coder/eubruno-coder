@@ -1,4 +1,4 @@
-const ASSISTANT_ENDPOINT = "https://YOUR-WORKER.workers.dev/api/chat";
+// Modo temporário sem IA: o widget responde com informações predefinidas.\n// Quando a API estiver publicada, basta inserir sua URL nesta constante.\nconst ASSISTANT_ENDPOINT = "";
 
 const styles = `
   .assistant-launcher{position:fixed;right:24px;bottom:24px;z-index:30;display:flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(167,139,250,.42);border-radius:999px;background:linear-gradient(110deg,#713cff,#168bff);color:#fff;font:700 13px "DM Sans",sans-serif;box-shadow:0 12px 34px rgba(45,55,160,.34);cursor:pointer;transition:transform .2s,box-shadow .2s}
@@ -46,7 +46,7 @@ panel.id = "portfolio-assistant";
 panel.setAttribute("aria-label", "Assistente do portfólio");
 panel.innerHTML = `
   <header class="assistant-head">
-    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">✦</span><span><strong>Assistente</strong><small>Guia do portfólio · online para ajudar</small></span></div>
+    <div class="assistant-identity"><span class="assistant-avatar" aria-hidden="true">✦</span><span><strong>Assistente</strong><small>Guia do portfólio · modo informativo</small></span></div>
     <button class="assistant-close" type="button" aria-label="Fechar conversa">×</button>
   </header>
   <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions">
@@ -57,7 +57,7 @@ panel.innerHTML = `
     <textarea class="assistant-input" rows="1" maxlength="1200" aria-label="Digite sua mensagem" placeholder="Escreva sua pergunta…"></textarea>
     <button class="assistant-send" type="submit" aria-label="Enviar mensagem">➤</button>
   </form>
-  <div class="assistant-disclaimer">Respostas geradas por IA com base nas informações públicas do portfólio e dos repositórios selecionados.</div>
+  <div class="assistant-disclaimer">Modo temporário sem IA: respostas predefinidas com base nas informações públicas do portfólio.</div>
 `;
 
 document.body.append(launcher, panel);
@@ -69,6 +69,33 @@ const typing = panel.querySelector(".assistant-typing");
 const close = panel.querySelector(".assistant-close");
 const history = [];
 let busy = false;
+
+function fallbackReply(question) {
+  const q = question.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase();
+
+  if (/^(oi|ola|bom dia|boa tarde|boa noite| tudo bem)/.test(q)) {
+    return "Olá! 👋 Posso ajudar você a conhecer o portfólio. Pergunte sobre projetos, experiência, formação, tecnologias ou formas de contato.";
+  }
+  if (/(projeto|repositorio|github|portfolio)/.test(q)) {
+    return "Alguns projetos públicos em destaque:\\n\\n• Projeto Final — Modernização AWS: proposta acadêmica documentada com EKS, RDS, EFS e CI/CD.\\n• Nginx Status Monitor: script Bash para monitoramento do Nginx, logs e relatório HTML.\\n• Portal de Pedidos: cardápio digital mobile-first em desenvolvimento.\\n• PortalClima: aplicação meteorológica V1 em desenvolvimento.\\n• Minha Compra: organizador de compras com cálculo de valores.\\n\\nVeja todos no GitHub: https://github.com/eubruno-coder";
+  }
+  if (/(experiencia|trabalhou|trabalho|carreira|compass|estagio|devsecops)/.test(q)) {
+    return "A trajetória combina experiência em atendimento, operações, relacionamento com clientes e supervisão. Na Compass UOL, Bruno atuou como estagiário em atividades relacionadas a DevSecOps e Cloud AWS, entre setembro de 2024 e fevereiro de 2025. O portfólio apresenta essa passagem como estágio, não como cargo pleno.";
+  }
+  if (/(formacao|faculdade|pos graduacao|graduacao|curso|estudo)/.test(q)) {
+    return "Bruno concluiu Gestão da Tecnologia da Informação pela UNIASSELVI em dezembro de 2025 e está cursando a pós-graduação em Desenvolvimento de Sistemas com Python, também pela UNIASSELVI.";
+  }
+  if (/(tecnologia|linguagem|ferramenta|cloud|aws|devops|kubernetes|linux|python)/.test(q)) {
+    return "Entre as tecnologias e temas listados estão AWS, Kubernetes (EKS), CloudWatch, Linux, Docker, CI/CD, GitHub Actions, Shell Script, IaC e Git. Python, Prometheus e Grafana aparecem como conhecimentos em estudo, não como experiência profissional comprovada.";
+  }
+  if (/(contato|email|e-mail|linkedin|contrat|falar com)/.test(q)) {
+    return "Você pode conhecer os canais profissionais pelos links abaixo:\\nGitHub: https://github.com/eubruno-coder\\nLinkedIn: https://linkedin.com/in/bruno-pereirasilva\\nE-mail: bruno_silvap@outlook.com";
+  }
+  if (/(quem e|sobre|bruno)/.test(q)) {
+    return "Bruno Silva é um profissional em transição e desenvolvimento de carreira na área de tecnologia, com direcionamento para Cloud, DevOps e infraestrutura. O portfólio reúne sua formação, experiência profissional e projetos públicos.";
+  }
+  return "Ainda não tenho uma resposta predefinida para essa pergunta. Neste modo temporário consigo ajudar com informações sobre projetos, experiência, formação, tecnologias e contato. Para perguntas mais específicas, podemos ativar a IA quando a API estiver configurada.";
+}
 
 function setOpen(open) {
   panel.classList.toggle("is-open", open);
@@ -93,14 +120,23 @@ form.addEventListener("submit", async event => {
   event.preventDefault();
   const message = input.value.trim();
   if (!message || busy) return;
-  if (ASSISTANT_ENDPOINT.includes("YOUR-WORKER")) {
-    addMessage("bot", "O chat já está instalado, mas a API ainda precisa ser configurada. Em breve estarei pronto para conversar!");
+  addMessage("user", message);
+  input.value = "";
+  if (!ASSISTANT_ENDPOINT) {
+    busy = true;
+    send.disabled = true;
+    typing.hidden = false;
+    window.setTimeout(() => {
+      addMessage("bot", fallbackReply(message));
+      busy = false;
+      send.disabled = false;
+      typing.hidden = true;
+      input.focus();
+    }, 350);
     return;
   }
-  addMessage("user", message);
   history.push({ role: "user", content: message });
   if (history.length > 8) history.splice(0, history.length - 8);
-  input.value = "";
   busy = true;
   send.disabled = true;
   typing.hidden = false;
