@@ -1,0 +1,6 @@
+name = "bruno-portfolio-assistant"
+main = "src/index.js"
+compatibility_date = "2026-11-21"
+
+[vars]
+OPENAI_MODEL = "gpt-5.5"
