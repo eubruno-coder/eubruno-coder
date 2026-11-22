@@ -95,7 +95,7 @@ export default {
           instructions: INSTRUCTIONS + "\n\n" + PORTFOLIO_CONTEXT,
           input: messages.map(message => ({
             role: message.role,
-            content: [{ type: "input_text", text: message.content }]
+            content: message.content
           })),
           max_output_tokens: 500,
           store: false
