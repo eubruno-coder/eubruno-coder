@@ -46,7 +46,6 @@ const styles = `
   .assistant-input{flex:1;min-width:0;resize:none;max-height:100px;padding:11px 12px;border:1px solid var(--line,#263451);border-radius:12px;background:var(--bg,#080d1d);color:var(--text,#f4f7ff);font:12px "DM Sans",sans-serif}
   .assistant-send{width:42px;flex-shrink:0;border:0;border-radius:12px;background:linear-gradient(135deg,#713cff,#168bff);color:white;font-size:18px;cursor:pointer}
   .assistant-send:disabled{opacity:.45;cursor:not-allowed}
-  .assistant-disclaimer{padding:0 15px 12px;color:var(--muted,#a7b4cc);font-size:9px;line-height:1.4}
   @media(max-width:600px){.assistant-launcher{right:16px;bottom:16px;padding:12px 15px}.assistant-panel{right:8px;bottom:76px;width:calc(100vw - 16px);height:min(620px,calc(100dvh - 92px));border-radius:17px}}
   @media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-panel,.assistant-message,.assistant-chips,.assistant-avatar:after,.assistant-dots i{animation:none!important;transition:none!important}}
 `;
