@@ -38,7 +38,35 @@ function about(){return `<span class="eyebrow">IDENTITY / PROFILE</span><h1>Brun
 function cloud(){return `<span class="eyebrow">TECH DOMAIN / CLOUD</span><h1>Cloud Center</h1><p class="lead-copy">Central de estudos e laboratórios em computação em nuvem. Os itens abaixo distinguem experiência de estágio, projetos acadêmicos e conhecimentos em desenvolvimento.</p>${section("Cloud foundations","Tecnologias e conceitos presentes na minha trajetória.",`<div class="module-grid">${panel("Amazon Web Services",tagList(["AWS","EC2","VPC","RDS","EKS","CloudWatch"]))}${panel("Container orchestration",tagList(["Kubernetes","Amazon EKS","Docker"]))}${panel("Cloud architecture",tagList(["Alta disponibilidade","Redes","Armazenamento","Escalabilidade"]))}</div>`)}${section("Laboratórios relacionados","Documentação e projetos técnicos públicos.",projectCards(projects.filter(p=>/AWS|Compass|Cloud/i.test(p.name+" "+p.description))))}`;}
 function devlab(){return `<span class="eyebrow">ENGINEERING / BUILD</span><h1>Development Lab</h1><p class="lead-copy">Bancada de desenvolvimento: aplicações web, ferramentas operacionais e produtos digitais em diferentes estágios de maturidade.</p>${section("Stack em desenvolvimento","Ferramentas utilizadas ou estudadas nos projetos.",`<div class="module-grid">${panel("Web","<p>HTML, CSS, JavaScript e interfaces responsivas.</p>"+tagList(["HTML5","CSS3","JavaScript"]))}${panel("Backend & dados","<p>Python, FastAPI, APIs REST e fundamentos de persistência.</p>"+tagList(["Python","FastAPI","REST API","PostgreSQL"]))}${panel("Versionamento","<p>Controle de versão, documentação e colaboração.</p>"+tagList(["Git","GitHub","Markdown"]))}</div>`)}${section("Build catalog","Aplicações e produtos em construção.",projectCards(projects.filter(p=>/Portal|LicitaRadar|Compra|NCroch|Delivery/i.test(p.name))))}`;}
 function infrastructure(){return `<span class="eyebrow">OPERATIONS / SYSTEMS</span><h1>Infrastructure</h1><p class="lead-copy">Ambiente dedicado a sistemas, automação, monitoramento e fundamentos de infraestrutura.</p>${section("Áreas técnicas","Práticas presentes em projetos, estágio ou estudos.",`<div class="module-grid">${panel("Linux & scripting","<p>Administração básica de sistemas e automação com Shell Script.</p>"+tagList(["Linux","Bash","Shell Script","Cron"]))}${panel("Containers & delivery","<p>Uso de containers e fundamentos de integração e entrega contínuas.</p>"+tagList(["Docker","CI/CD","GitHub Actions"]))}${panel("Observabilidade","<p>Estudos e contato com ferramentas de monitoramento.</p>"+tagList(["CloudWatch","Prometheus · estudo","Grafana · estudo"]))}</div>`)}${section("Infrastructure projects","Laboratórios e ferramentas relacionados.",projectCards(projects.filter(p=>/Nginx|Compass|AWS/i.test(p.name+" "+p.description))))}`;}
-function projectList(){return `<span class="eyebrow">CATALOG / PROJECTS</span><h1>Projetos</h1><p class="lead-copy">Catálogo de iniciativas públicas. O status identifica o estágio informado, sem apresentar funcionalidades planejadas como entregas concluídas.</p>${projectCards(projects)}`;}
+function projectList(){
+  return `<span class="eyebrow">CATALOG / PROJECTS</span><h1>Projetos</h1><p class="lead-copy">Explore as iniciativas públicas. Pesquise por nome ou tecnologia e filtre por tipo de projeto.</p>
+  <div class="catalog-toolbar">
+    <input id="project-search" type="search" placeholder="Buscar projeto ou tecnologia..." aria-label="Buscar projeto ou tecnologia">
+    <select id="project-type" aria-label="Filtrar tipo de projeto"><option value="all">Todos os tipos</option><option value="original">Projetos próprios</option><option value="study">Estudos e laboratórios</option></select>
+    <span id="project-count" class="muted">${projects.length} projetos</span>
+  </div>
+  <div id="project-catalog">${projectCards(projects)}</div>`;
+}
+function bindProjectFilters(){
+  const search=document.querySelector("#project-search");
+  const type=document.querySelector("#project-type");
+  const catalog=document.querySelector("#project-catalog");
+  const count=document.querySelector("#project-count");
+  if(!search||!type||!catalog||!count)return;
+  const update=()=>{
+    const query=search.value.trim().toLocaleLowerCase("pt-BR");
+    const selected=type.value;
+    const filtered=projects.filter(project=>{
+      const matchesType=selected==="all"||project.type===selected;
+      const haystack=[project.name,project.description,...(project.tags||[])].join(" ").toLocaleLowerCase("pt-BR");
+      return matchesType&&haystack.includes(query);
+    });
+    count.textContent=`${filtered.length} de ${projects.length} projetos`;
+    catalog.innerHTML=filtered.length?projectCards(filtered):'<div class="empty-note">Nenhum projeto encontrado. Tente outro termo ou filtro.</div>';
+  };
+  search.addEventListener("input",update);
+  type.addEventListener("change",update);
+}
 function education(){return `<span class="eyebrow">LEARNING / ACADEMIC</span><h1>Formação</h1><div class="module-grid">${panel("Gestão da Tecnologia da Informação",'<span class="tag">Concluído · 2025</span><p>UNIASSELVI</p>')}${panel("Desenvolvimento de Sistemas com Python",'<span class="tag">Em andamento</span><p>UNIASSELVI · Pós-graduação Lato Sensu.</p>')}</div>${section("Cursos e estudos complementares","Formações e conhecimentos informados no currículo.",`<div class="module-grid">${panel("Linux Essentials","<p>Curso/certificação informado no currículo.</p>")}${panel("Linux Completo + Servidores","<p>Curso informado no currículo.</p>")}${panel("AWS DevOps & CI/CD","<p>Formação complementar listada no LinkedIn.</p>")}</div>`)}`;}
 function experience(){const jobs=[{company:"Speedmais",role:"Operador de Telemarketing",period:"dez/2025 – set/2026",items:["Atendimento por canais digitais, seguindo procedimentos operacionais e padrões de qualidade."]},{company:"Teleperformance",role:"Expert em Interação",period:"mar/2023 – jun/2025",items:["Atendimento técnico e suporte especializado em e-commerce, com resolução e encaminhamento de demandas."]},{company:"Compass UOL",role:"Estagiário — DevSecOps | Cloud AWS",period:"set/2024 – fev/2025",items:["Apoio à modernização de sistemas em ambiente AWS, utilizando Kubernetes (EKS).","Desenvolvimento de scripts Shell e rotinas de monitoramento com CloudWatch.","Colaboração em pipelines CI/CD com GitHub Actions e documentação técnica."]},{company:"Ativa Solar",role:"Representante de vendas",period:"jul/2022 – jan/2023",items:["Prospecção e venda de kits fotovoltaicos para clientes comerciais e residenciais."]},{company:"Ativa Solar",role:"Assistente administrativo",period:"abr/2022 – jun/2022",items:["Atividades administrativas, atendimento comercial e suporte pós-venda."]},{company:"Logos Serviços",role:"Analista de Relacionamento Operacional",period:"set/2020 – mar/2022",items:["Atendimento presencial a clientes comerciais, residenciais e corporativos de concessionária de energia elétrica."]},{company:"NeoBPO",role:"Supervisor de Operações",period:"jan/2019 – jan/2020",items:["Supervisão e desenvolvimento de equipes de atendimento.","Acompanhamento de relatórios, apresentação de resultados e melhoria de processos."]},{company:"NeoBPO",role:"Agente de Processos e Negócios I",period:"mai/2015 – dez/2018",items:["Atendimento ativo e receptivo a clientes comerciais, residenciais e industriais.","Telecobrança e suporte a pontos de atendimento credenciados."]},{company:"Contax S.A.",role:"Atendimento e Suporte Técnico",period:"mar/2013 – mai/2014",items:["Suporte técnico de linhas móveis e atendimento de serviços de banda larga e telefonia celular."]}];return `<span class="eyebrow">CAREER / TIMELINE</span><h1>Experiência</h1><p class="lead-copy">Trajetória profissional reunindo operações, atendimento, relacionamento, liderança e experiência técnica em estágio.</p><div class="timeline">${jobs.map(j=>`<article class="info-card job-card"><div class="job-top"><div><h3>${esc(j.company)}</h3><p><strong>${esc(j.role)}</strong></p></div><span class="tag">${esc(j.period)}</span></div><ul>${j.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></article>`).join("")}</div>`;}
 function contact(){return `<span class="eyebrow">CONNECT / CONTACT</span><h1>Contato</h1><p class="lead-copy">Canais profissionais e pontos de contato públicos.</p><div class="module-grid">${panel("E-mail",`<p>${esc(profile.email)}</p><a class="project-link" href="mailto:${esc(profile.email)}">Enviar mensagem ↗</a>`)}${panel("LinkedIn",`<p>Trajetória e conexões profissionais.</p><a class="project-link" href="${esc(profile.linkedin)}" target="_blank" rel="noreferrer">Acessar perfil ↗</a>`)}${panel("GitHub",`<p>Repositórios, código e experimentos públicos.</p><a class="project-link" href="${esc(profile.github)}" target="_blank" rel="noreferrer">Acessar perfil ↗</a>`)}</div>`;}
@@ -53,7 +81,18 @@ async function githubExplorer(){
     filter.addEventListener("input",draw);draw();
   }catch(error){document.querySelector("#repo-count").textContent="Conexão indisponível";document.querySelector("#repo-list").innerHTML=`<div class="empty-note">${esc(error.message)} <a href="https://github.com/eubruno-coder?tab=repositories" target="_blank" rel="noreferrer">Abrir repositórios no GitHub ↗</a></div>`;}
 }
-function render(){const key=location.hash.replace(/^#\/?/,"")||"inicio";const route=routes[key]||routes.inicio;pageName.textContent=route.title;route.render();document.querySelectorAll("[data-route]").forEach(a=>a.classList.toggle("active",a.dataset.route===key));document.querySelector("#sidebar").classList.remove("open");}
+function render(){
+  const key=location.hash.replace(/^#\\/?/,"")||"inicio";
+  const route=routes[key]||routes.inicio;
+  pageName.textContent=route.title;
+  const output=route.render();
+  // Standard routes return markup; GitHub Explorer manages its async loading state.
+  if(typeof output==="string") app.innerHTML=output;
+  document.querySelectorAll("[data-route]").forEach(link=>link.classList.toggle("active",link.dataset.route===key));
+  document.querySelector("#sidebar").classList.remove("open");
+  if(key==="projetos") bindProjectFilters();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
 document.querySelector("#theme-toggle").addEventListener("click",()=>{const root=document.documentElement;const next=root.dataset.theme==="light"?"dark":"light";root.dataset.theme=next;localStorage.setItem("portfolio-theme",next);document.querySelector("#theme-icon").textContent=next==="light"?"☀":"☾";document.querySelector("#theme-label").textContent=next==="light"?"Tema claro":"Tema escuro";});
 const saved=localStorage.getItem("portfolio-theme");if(saved){document.documentElement.dataset.theme=saved;document.querySelector("#theme-icon").textContent=saved==="light"?"☀":"☾";document.querySelector("#theme-label").textContent=saved==="light"?"Tema claro":"Tema escuro";}
 document.querySelector("#menu-toggle").addEventListener("click",()=>document.querySelector("#sidebar").classList.toggle("open"));
