@@ -82,7 +82,8 @@ async function githubExplorer(){
   }catch(error){document.querySelector("#repo-count").textContent="Conexão indisponível";document.querySelector("#repo-list").innerHTML=`<div class="empty-note">${esc(error.message)} <a href="https://github.com/eubruno-coder?tab=repositories" target="_blank" rel="noreferrer">Abrir repositórios no GitHub ↗</a></div>`;}
 }
 function render(){
-  const key=location.hash.replace(/^#\\/?/,"")||"inicio";
+  const hash=location.hash;
+  const key=hash.startsWith("#/")?hash.slice(2):hash.startsWith("#")?hash.slice(1):"inicio";
   const route=routes[key]||routes.inicio;
   pageName.textContent=route.title;
   const output=route.render();
