@@ -1,4 +1,4 @@
-// Modo temporário sem IA: o widget responde com informações predefinidas.\n// Quando a API estiver publicada, basta inserir sua URL nesta constante.\nconst ASSISTANT_ENDPOINT = "";
+// Assistente FAQ com respostas guiadas e interações locais.\nconst ASSISTANT_ENDPOINT = "";
 
 const styles = `
   .assistant-launcher{position:fixed;right:24px;bottom:24px;z-index:30;display:flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(167,139,250,.42);border-radius:999px;background:linear-gradient(110deg,#713cff,#168bff);color:#fff;font:700 13px "DM Sans",sans-serif;box-shadow:0 12px 34px rgba(45,55,160,.34);cursor:pointer;transition:transform .2s,box-shadow .2s}
